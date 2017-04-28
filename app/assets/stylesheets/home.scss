@@ -1,0 +1,52 @@
+
+@import url('https://fonts.googleapis.com/css?family=Eagle+Lake|Roboto');
+
+$purple: #2A0631;
+
+
+body, html {
+    height: 100%;
+    background-color: white
+}
+
+.bg {
+    /* The image used */
+    background-image: url("gatheringbg.jpg");
+
+    /* Full height */
+    height: 50%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+nav {
+  position: relative;
+}
+
+
+h4 {
+  color: black;
+  font-family: Eagle Lake;
+  text-align: left;
+  margin-top: 20
+}
+h5 {
+  color: black;
+  font-family: Roberto;
+  text-align: left;
+
+}
+
+
+
+// .title-bar{
+//    opacity: 0.5;
+//
+// }
+
+.header {
+}
