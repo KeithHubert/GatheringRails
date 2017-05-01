@@ -1,0 +1,31 @@
+<% if @game.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@game.errors.count, "error") %> Please complete the form
+    </h2>
+    <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @game do |f| %>
+  <%= f.label :format, "Format" %>
+  <%= f.text_field :format %>
+
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :url %>
+
+  <%= f.label :time, "Time" %>
+  <%= f.text_field :address %>
+
+  <%= f.label :date, "Date" %>
+  <%= f.text_field :date %>
+
+  <%= f.label :players, "Number of Players" %>
+  <%= f.collection_select :players,  %>
+
+  <%= f.submit :id=>"create_game" %>
+<% end %>

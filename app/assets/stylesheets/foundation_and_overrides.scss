@@ -50,3 +50,14 @@
 //
 // @include motion-ui-transitions;
 // @include motion-ui-animations;
+.title-bar {
+  background: white
+
+}
+
+.title-bar-title {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  font-size: 4vmin;
+  color: black
+}
