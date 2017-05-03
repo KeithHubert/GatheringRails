@@ -12,17 +12,27 @@
 <% end %>
 
 <%= form_for @game do |f| %>
-  <%= f.label :format, "Format" %>
+
+  <%= f.label :format, "Title" %>
   <%= f.text_field :format %>
 
-  <%= f.label :location, "Location" %>
-  <%= f.text_field :url %>
+  <%= f.label :gametype, "Format" %>
+  <%= f.text_field :gametype %>
 
   <%= f.label :time, "Time" %>
   <%= f.text_field :address %>
 
   <%= f.label :date, "Date" %>
   <%= f.text_field :date %>
+
+  <%= f.label :address, "Address" %>
+  <%= f.text_field :address %>
+
+  <%= f.label :city, "City" %>
+  <%= f.text_field :city %>
+
+  <%= f.label :zip, "Zip" %>
+  <%= f.text_field :zip %>
 
   <%= f.label :players, "Number of Players" %>
   <%= f.collection_select :players,  %>

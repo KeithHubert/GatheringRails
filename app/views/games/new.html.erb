@@ -1,0 +1,53 @@
+<div class='form-box'>
+
+  <h1 class='new-header'>New Game Form</h1>
+
+  <%= form_for @game, :html => { :class => 'game-form'} do |f| %>
+
+    <div class='row'>
+      <%= f.label :title, "Game Title"%>
+      <%= f.text_field :title, :autofocus=>true %>
+      <p class='error'><%= show_errors(@game, 'Game Title') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :url, "Website" %>
+      <%= f.text_field :url %>
+      <p class='error'><%= show_errors(@game, 'Url') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :address, "Address" %>
+      <%= f.text_field :address %>
+      <p class='error'><%= show_errors(@game, 'Address') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :city, "City" %>
+      <%= f.text_field :city %>
+      <p class='error'><%= show_errors(@game, 'City') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :state, "State" %>
+      <%= f.text_field :state %>
+      <p class='error'><%= show_errors(@game, 'State') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :zip, "Zip" %>
+      <%= f.text_field :zip %>
+      <p class='error'><%= show_errors(@game, 'Zip') %></p>
+    </div>
+
+    <div class='row'>
+      <%= f.label :capacity, "Capacity" %>
+      <%= f.text_field :capacity %>
+    </div>
+    <br>
+
+    <div class='submit-container'>
+      <%= f.submit :id=>"create-game" %>
+    </div>
+  <% end %>
+</div>

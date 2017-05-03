@@ -1,22 +1,12 @@
 <div class='row'>
-  <div class='small-10 medium-4 small-centered text-center columns venue-label'>
+  <div class='small-10 medium-4 small-centered text-center columns game-label'>
     <h1>Current Games</h1>
   </div>
 </div>
 
-<% @games.each do |games| %>
 
-  <div class="venue-box">
-    <%= link_to game.format, game_path(game) %><br/>
-  </div>
-
-  <% if @game.blank? %>
-    <h4>No Results for: <%= params[:search] %>.</h4>
-  <% end %>
-<% end %>
-
-<br />
 
 <div class='add-game'>
+  <div id= 'app'></div>
   <%= link_to "Add a Game", new_game_path, class: 'button' %>
 </div>

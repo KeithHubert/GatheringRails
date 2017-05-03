@@ -2,10 +2,11 @@ class Game < ApplicationRecord
   has_many :games, through: :users_games
   has_many :user_games
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-
-  validates :email, presence: true
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  validates :title, presence: true
+  validates :gametype, presence: true
+  validates :time, presence: true
+  validates :date, presence: true
+  validates :address, presence: true
+  validates :zip, presence: true
+  validates :number_of_players, presence: true
 end
