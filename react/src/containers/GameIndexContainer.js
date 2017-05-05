@@ -27,6 +27,7 @@ class GameIndexContainer extends React.Component {
   }
 
   addNewGame(formPayload) {
+
   fetch('/api/v1/games', {
     method: 'POST',
     body: JSON.stringify(formPayload)
@@ -34,6 +35,7 @@ class GameIndexContainer extends React.Component {
   .then(response => response.json())
   .then(responseData => {
     this.setState({ games: [...this.state.games, responseData] })
+    // window.whatever path correct showpage
   })
 }
 

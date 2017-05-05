@@ -5,7 +5,7 @@ class Video extends Component {
         super(props);
 
         this.state = {
-            videoURL: 'https://s3.us-east-2.amazonaws.com/gathererbackground/gatherernew.mp4'
+            videoURL: 'https://s3.us-east-2.amazonaws.com/gathererbackground/animation.mp4'
         }
     }
 

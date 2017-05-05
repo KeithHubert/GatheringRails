@@ -10,17 +10,18 @@ import NumberOfPlayersField from '../components/NumberOfPlayersField';
 
 class NewGameFormContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       title: '',
-      gameType: '',
+      gametype: '',
       time: '',
       date: '',
       address: '',
       city: '',
       zip: '',
-      number_of_players: 2,
-    }
+      number_of_players: '',
+      games: []
+    };
   this.handleFormSubmit=this.handleFormSubmit.bind(this);
   this.handleFormClear=this.handleFormClear.bind(this);
   this.handleTitleChange=this.handleTitleChange.bind(this);
@@ -31,20 +32,21 @@ class NewGameFormContainer extends Component {
   this.handleCityChange=this.handleCityChange.bind(this);
   this.handleZipChange=this.handleZipChange.bind(this);
   this.handleNumberOfPlayersChange=this.handleNumberOfPlayersChange.bind(this);
+  this.addNewGame=this.addNewGame.bind(this);
 }
 
 handleFormSubmit(event) {
-  event.preventDefault()
+  event.preventDefault();
   let formPayLoad = {
     title: this.state.title,
-    gameType: this.state.gametype,
+    gametype: this.state.gametype,
     time: this.state.time,
     date: this.state.date,
     address: this.state.address,
     city: this.state.city,
     zip: this.state.zip,
     number_of_players: this.state.number_of_players,
-  }
+  };
   this.addNewGame(formPayLoad);
   this.handleFormClear(event);
 }
@@ -53,25 +55,26 @@ handleFormClear(event) {
   event.preventDefault();
   this.setState({
     title: '',
-    gameType: '',
+    gametype: '',
     time: '',
     date: '',
     address: '',
     city: '',
     zip: '',
     number_of_players: 2,
-  })
+  });
 }
 
 addNewGame(formPayload) {
 fetch('/api/v1/games', {
   method: 'POST',
+  credentials: 'same-origin',
   body: JSON.stringify(formPayload)
 })
 .then(response => response.json())
 .then(responseData => {
-  this.setState({ games: [...this.state.games, responseData] })
-})
+  this.setState({ games: [...this.state.games, responseData] });
+});
 }
 
 handleTitleChange(event) {
@@ -81,7 +84,7 @@ handleTitleChange(event) {
 
 handleGameTypeChange(event) {
   event.preventDefault();
-  this.setState({ gameType: event.target.value })
+  this.setState({ gametype: event.target.value })
 }
 
 handleTimeChange(event) {

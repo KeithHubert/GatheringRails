@@ -11,7 +11,7 @@ const Home = (props) => {
             <a href="/users/sign_up">Sign Up</a>
           </div>
               <video id="background-video" loop autoPlay>
-              <source src="https://s3.us-east-2.amazonaws.com/gathererbackground/gatherernew.mp4" type="video/mp4" />
+              <source src="https://s3.us-east-2.amazonaws.com/gathererbackground/animation.mp4" type="video/mp4" />
             Your browser does not support the video tag.
             </video>
         </div>
