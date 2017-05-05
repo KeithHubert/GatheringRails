@@ -6,7 +6,7 @@ const Home = (props) => {
     <div>
       <div className="outerwrap">
         <div className="wrapper">
-          <h5>The World Is Your Kitchen Table</h5>
+          <h5>The World Is Your Playground</h5>
             <div className="center">
             <a href="/users/sign_up">Sign Up</a>
           </div>

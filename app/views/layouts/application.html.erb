@@ -16,7 +16,8 @@
     <div class="title-bar">
       <div class="title-bar-left">
         <button class="menu-icon" type="button"></button>
-        <span class="title-bar-title">Gathering</span>
+        <a href="/games"><span class="title-bar-title">Gathering</span></a>
+
     </div>
   <div class="title-bar-right">
     <div class="top-bar-right">
@@ -27,7 +28,7 @@
               user_path(current_user)
             %>
           </li>
-        
+
           <li>
             <%= link_to "Sign Out",
               destroy_user_session_path, method: :delete

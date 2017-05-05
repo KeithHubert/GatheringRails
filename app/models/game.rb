@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  has_many :games, through: :users_games
+  has_many :users, through: :users_games
   has_many :user_games
 
   validates :title, presence: true
