@@ -1,35 +1,3 @@
-<div class='row'>
-  <h1 class='showpage-game-name small-10 small-centered text-center'><%= @game.title %></h1>
-</div>
-
-<br />
-
-<div class='row'>
-  <div class='game-address-box small-10 medium-4 small-centered columns text-center'>
-    <strong>Game Address:</strong>
-    <p>
-      <%= @game.address %><br/>
-      <%= @game.city %>, <%= @game.zip %>
-    </p>
-    <strong>Game Time</strong>
-    <p>
-      <%= @game.date %><br/>
-      <%= @game.time %>
-    </p>
-
-      <br>
-    <%= link_to 'Add New Game', new_game_path(@game), class: 'button add-review' %><br/>
-  </div>
-</div>
-
-<div class='row'>
-  <div class='small-10 medium-4 small-centered columns map-container' id='map'>
-  </div>
-  <br />
-</div>
-
-<div class='row'>
-  <div class='small-10 align-center text-center'
-    <%= link_to 'Back to games', game_path %>
-  </div>
+<div class='add-game'>
+  <div id= 'app'></div>
 </div>
