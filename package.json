@@ -1,5 +1,5 @@
 {
-  "name": "VenView",
+  "name": "gatherer",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -9,6 +9,10 @@
     "test": "node_modules/.bin/karma start react/karma.conf.js",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/KeithHubert/Gathering"
+},
   "author": "",
   "license": "ISC",
   "devDependencies": {
