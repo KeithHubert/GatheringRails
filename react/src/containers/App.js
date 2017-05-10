@@ -19,6 +19,7 @@ class App extends React.Component {
       <Route path="/games" component={GameIndexContainer}/>
       <Route path="/games/new" component={NewGameFormContainer}/>
       <Route path="/games/:id" component={GameShowContainer}/>
+      <Route path="/map" component={GameIndexContainer}/>
      </Router>
     )
   }
