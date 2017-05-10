@@ -8,8 +8,8 @@ class MapController < ApplicationController
     @hash = Gmaps4rails.build_markers(@games) do |game, marker|
       marker.lat game.lat
       marker.lng game.lng
-      marker.title game.name
-      marker.infowindow "<h6><a href='/games/" + game.id.to_s + "'>" + game.name + "</a></h6><p>Address: " + game.location + "<br/>Description: " + game.description + "</p>"
+      marker.title game.title
+      marker.infowindow "<h6><a href='/games/" + game.id.to_s + "'>" + game.title + "</a></h6><p>Address: " + game.address + "<br/>Description: " + game.gametype + "</p>"
     end
   end
 end

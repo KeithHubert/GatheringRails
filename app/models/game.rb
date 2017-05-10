@@ -12,6 +12,10 @@ class Game < ApplicationRecord
   validates :zip, presence: true
   validates :number_of_players, presence: true
 
+  geocoded_by :full_address, :latitude  => :lat, :longitude => :lng
+  after_validation :geocode, if: :address_changed?
+
+
 # def address
 #   [address, city, zip].compact.join(', ')
 # end
@@ -20,6 +24,4 @@ def full_address
    full_address = "#{self.address + self.city + self.zip}"
 end
 
- geocoded_by :full_address, :latitude  => :lat, :longitude => :lo
- after_validation :geocode, if: :address_changed?
 end
