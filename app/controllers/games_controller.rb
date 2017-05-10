@@ -7,6 +7,11 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def show
+  @game = Game.find(params[:id])
+  # @reviews = @venue.reviews.order(created_at: :desc)
+end
+
   def create
     @game = Game.new(game_params)
     if user_signed_in?
