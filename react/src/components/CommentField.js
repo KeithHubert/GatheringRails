@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MessageField = (props) => {
+const CommentField = props => {
   return (
     <label>{props.label}
       <input
@@ -12,5 +12,4 @@ const MessageField = (props) => {
     </label>
   );
 }
-
-export default MessageField;
+export default TextField;

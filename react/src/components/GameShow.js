@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import CommentContainer from '../containers/CommentContainer'
 
 const GameShow = (props) => {
   return(
@@ -20,6 +21,7 @@ const GameShow = (props) => {
       <ul>{props.zip}</ul>
       <h6> Players </h6>
       <ul>{props.number_of_players}</ul>
+      <CommentContainer />
     </div>
   )
 }
