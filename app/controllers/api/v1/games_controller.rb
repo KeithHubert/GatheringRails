@@ -1,9 +1,18 @@
 class Api::V1::GamesController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token
 
   def index
     recentgames = Game.order(created_at: :desc).limit(5)
     render json: recentgames
+  end
+
+  def show
+    game = Game.find(params[:id])
+    comments = game.comments
+    user = current_user
+
+    game_show_data = { game: game, comments: comments, current_user: user }
+
+    render json: game_show_data
   end
 
   def create

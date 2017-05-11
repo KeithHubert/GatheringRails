@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
-
   devise_for :users
+  
+  root 'home#index'
 
   resources :users
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :games, only: [:index, :new, :create]
+      resources :games, only: [:index, :new, :create, :show]
       resources :comments, only: [:index, :new, :create]
     end
   end
