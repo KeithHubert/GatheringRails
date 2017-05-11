@@ -35,7 +35,6 @@ class GameIndexContainer extends React.Component {
   .then(response => response.json())
   .then(responseData => {
     this.setState({ games: [...this.state.games, responseData] })
-    // window.whatever path correct showpage
   })
 }
 
