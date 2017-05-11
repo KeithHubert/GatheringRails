@@ -71,7 +71,7 @@ class GameShowContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       debugger;
-      this.setState({ game: body.game, currentUser: body.current_user, comments: body.comments });
+      this.setState({ game: body, currentUser: body.current_user, comments: body.comments });
     })
   }
 
