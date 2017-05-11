@@ -7,12 +7,7 @@ class Api::V1::GamesController < Api::V1::BaseController
 
   def show
     game = Game.find(params[:id])
-    comments = game.comments
-    user = current_user
-
-    game_show_data = { game: game, comments: comments, current_user: user }
-
-    render json: game_show_data
+    render json: game, user: current_user 
   end
 
   def create

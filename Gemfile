@@ -17,6 +17,7 @@ gem 'underscore-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'httpclient'
+gem 'active_model_serializers'
 
 group :production do
   gem "puma"
