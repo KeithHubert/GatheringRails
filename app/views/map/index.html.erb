@@ -3,16 +3,6 @@
 </div>
 <div id = 'background' class='small-12 columns medium-4 columns large-4 columns'>
 
-  <div class='text-center'>
-    <h4>Don't See the Game You Want?</h4>
-  </div>
-  <div class='medium-8 columns medium-offset-2 columns float-left'>
-    <%= button_to 'Search Games''button' %>
-  </div><div class='medium-8 columns medium-offset-2 columns float-left'>
-    <%= button_to 'See All Games', games_path, method: :get, id: 'button' %>
-  </div><div class='medium-8 columns medium-offset-2 columns float-left'>
-    <%= button_to 'List a New Game', new_game_path, method: :get, id: 'button' %>
-  </div>
 
   <div id="app">
 
@@ -41,3 +31,11 @@
   handler.map.centerOn(marker);
 }
 </script>
+
+<div class='medium-8 columns medium-offset-2 columns float-left'>
+  <%= button_to 'Search Games''button' %>
+</div><div class='medium-8 columns medium-offset-2 columns float-left'>
+  <%= button_to 'See All Games', games_path, method: :get, id: 'button' %>
+</div><div class='medium-8 columns medium-offset-2 columns float-left'>
+  <%= button_to 'List a New Game', new_game_path, method: :get, id: 'button' %>
+</div>

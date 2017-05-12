@@ -22,12 +22,12 @@ class CommentContainer extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-      let formPayload = {
-        comment: this.state.comment
-      };
-      this.addNewComment(formPayLoad);
-      this.handleFormClear(event);
-    }
+    let formPayload = {
+      comment: this.state.comment
+    };
+    this.addNewComment(formPayLoad);
+    this.handleClearForm(event);
+  }
 
 
   handleCommentChange(event) {
