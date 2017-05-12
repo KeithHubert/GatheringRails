@@ -26,11 +26,12 @@ const GameShow = (props) => {
       <div>
         <form id={props.game_Id} onSubmit={props.handleSubmit}>
           <CommentField
-          form = {props.user_id}
-          user_id = {props.user_id}
-          handlerFunction = {props.handlerFunction}
+            form = {props.user_id}
+            user_id = {props.user_id}
+            handlerFunction = {props.handlerFunction}
+            handleFormClear = {props.handleFormClear}
+            content = {props.comment_content}
           />
-          // put in submit button that will automatically trigger the onSubmit function
         </form>
       </div>
     </div>

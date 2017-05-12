@@ -5,8 +5,8 @@ const CommentTile = (props) => {
   // username = this
   return(
     <div>
-      <strong> {props.user.first_name} {props.user.last_name}</strong>
-      <strong>: </strong>{props.comment}
+      <strong> {props.user.first_name} {props.user.last_name}: </strong>
+      {props.comment}
     </div>
   )
 }

@@ -18,7 +18,11 @@ class Api::V1::CommentsController < Api::V1::BaseController
     comment_user = new_comment.user
 
     if new_comment.save!
-      render json: { comment: new_comment, user: comment_user }
+      render json: {
+        comment: new_comment.comment,
+        id: new_comment.id,
+        user: comment_user
+      }
     end
   end
 end
