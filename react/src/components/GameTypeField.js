@@ -1,14 +1,18 @@
 import React from 'react';
 
-const GameTypeField = (props) => {
+const GameTypeField = props => {
+  let optionElements = props.options.map(option =>{
+    return (
+      <option key={option} value={option}>{option}</option>
+    );
+  })
+
   return (
     <label>{props.label}
-      <input
-        name={props.name}
-        onChange={props.handlerFunction}
-        type='text'
-        value={props.content}
-      />
+      <select name={props.name} value={props.selectedOption} onChange={props.handlerFunction}>
+        <option value=""></option>
+        {optionElements}
+      </select>
     </label>
   );
 }

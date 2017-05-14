@@ -13,7 +13,6 @@ class NewGameFormContainer extends Component {
     super(props);
     this.state = {
       title: '',
-      gametype: '',
       time: '',
       date: '',
       address: '',
@@ -21,7 +20,10 @@ class NewGameFormContainer extends Component {
       zip: '',
       number_of_players: '',
       games: [],
+      gameTypeOptions: ['Commander/EDH', 'Frontier', 'Legacy', 'Modern', 'Pauper', 'Standard'],
+      selectedOption: ''
     };
+
   this.handleFormSubmit=this.handleFormSubmit.bind(this);
   this.handleFormClear=this.handleFormClear.bind(this);
   this.handleTitleChange=this.handleTitleChange.bind(this);
@@ -33,29 +35,37 @@ class NewGameFormContainer extends Component {
   this.handleZipChange=this.handleZipChange.bind(this);
   this.handleNumberOfPlayersChange=this.handleNumberOfPlayersChange.bind(this);
   this.addNewGame=this.addNewGame.bind(this);
+  this.handleGameSelection = this.handleGameSelection.bind(this);
+  // this.validateGameSelection = this.validateGameSelection.bind(this);
+
 }
 
 handleFormSubmit(event) {
   event.preventDefault();
   let formPayLoad = {
     title: this.state.title,
-    gametype: this.state.gametype,
+    gameType: this.state.gametype,
     time: this.state.time,
     date: this.state.date,
     address: this.state.address,
     city: this.state.city,
     zip: this.state.zip,
     number_of_players: this.state.number_of_players,
+    selectedOption: this.state.gameSelected
   };
   this.addNewGame(formPayLoad);
   this.handleFormClear(event);
+}
+
+handleGameSelection(event) {
+  this.setState({ selectedOption: event.target.value })
 }
 
 handleFormClear(event) {
   event.preventDefault();
   this.setState({
     title: '',
-    gametype: '',
+    selectedOption: '',
     time: '',
     date: '',
     address: '',
@@ -130,10 +140,11 @@ handleNumberOfPlayersChange(event) {
           handlerFunction={this.handleTitleChange}
         />
         <GameTypeField
-          content={this.state.gametype}
           label="Game Type"
-          name="gametype"
-          handlerFunction={this.handleGameTypeChange}
+          name="gameTypeOptions"
+          options={this.state.gameTypeOptions}
+          selectedOption={this.state.selectedOption}
+          handlerFunction={this.handleGameSelection}
         />
         <TimeField
           content={this.state.time}

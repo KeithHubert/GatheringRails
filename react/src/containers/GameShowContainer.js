@@ -114,14 +114,16 @@ class GameShowContainer extends React.Component {
               handleFormClear = {this.handleFormClear}
               comment_content = {this.state.comment}
             />
-            <div className="button-group">
-              <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
-              <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
-            </div>
           </div>
 
           <div className='LOOKHERE'>
             {all_comments}
+          </div>
+
+
+          <div className="button-group">
+            <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
+            <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
           </div>
 
         </div>

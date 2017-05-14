@@ -23,16 +23,16 @@ const GameShow = (props) => {
         <h6> Players </h6>
         <ul>{props.number_of_players}</ul>
       </div>
-      <div>
-        <form id={props.game_Id} onSubmit={props.handleSubmit}>
-          <CommentField
-            form = {props.user_id}
-            user_id = {props.user_id}
-            handlerFunction = {props.handlerFunction}
-            handleFormClear = {props.handleFormClear}
-            content = {props.comment_content}
-          />
-        </form>
+      <div className='commentbox'>
+      <form id={props.game_Id} onSubmit={props.handleSubmit}>
+        <CommentField
+          form = {props.user_id}
+          user_id = {props.user_id}
+          handlerFunction = {props.handlerFunction}
+          handleFormClear = {props.handleFormClear}
+          content = {props.comment_content}
+        />
+      </form>
       </div>
     </div>
   )
