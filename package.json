@@ -10,9 +10,9 @@
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/KeithHubert/Gathering"
-},
+    "type": "git",
+    "url": "https://github.com/KeithHubert/Gathering"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -44,6 +44,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
+    "react-select": "file:react-select",
     "redux": "^3.5.2",
     "redux-form": "^5.2.3",
     "redux-thunk": "^2.1.0",
