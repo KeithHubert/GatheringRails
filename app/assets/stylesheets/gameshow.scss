@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Mrs+Sheppards|Oswald|Open+Sans');
+
+
 .game-show {
   h6 {
     font-weight: bolder;
@@ -6,3 +9,19 @@
     margin-left: 0;
   }
 }
+
+.game-tile-inner {
+  h4 {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 5vmin;
+  }
+
+}
+// 
+// .game-tile {
+//   p {
+//     font-size: 1vmin;
+//   }
+// }

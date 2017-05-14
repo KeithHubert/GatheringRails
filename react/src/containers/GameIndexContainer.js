@@ -54,7 +54,7 @@ class GameIndexContainer extends React.Component {
       return (
         <div className="game-tile-outer">
           <div className="game-tile-inner">
-            <h5>Recently Added</h5>
+            <h4>Recently Added</h4>
             {games}
             <hr />
           </div>
