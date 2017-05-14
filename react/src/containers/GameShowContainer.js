@@ -9,13 +9,15 @@ class GameShowContainer extends React.Component {
       game: {},
       currentUser: '',
       comments: [],
-      comment: ''
+      comment: '',
+      game_id: ''
     };
 
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.addNewComment = this.addNewComment.bind(this);
     this.handleFormClear = this.handleFormClear.bind(this);
     this.handleCommentChange = this.handleCommentChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
 
@@ -26,7 +28,6 @@ class GameShowContainer extends React.Component {
 
   handleCommentChange(event){
     this.setState({comment: event.target.value})
-
   }
 
   handleCommentSubmit(){
@@ -62,6 +63,15 @@ class GameShowContainer extends React.Component {
     });
   }
 
+  handleDelete() {
+  let gameId = this.props.params.id;
+  fetch(`/api/v1/games/${gameId}`, {
+    credentials: "same-origin",
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" }
+  });
+}
+
   loadGamesFromServer(id) {
     fetch(`/api/v1/games/${id}`, {
       credentials: 'same-origin',
@@ -93,39 +103,46 @@ class GameShowContainer extends React.Component {
     })
 
       return (
-        <div className="row align-justify">
-          <div className="column small-4 top-five">
-            <h3> Game Info </h3>
-            <hr />
-            <GameShow
-              current_user={this.state.currentUser}
-              key = {this.state.game.id}
-              id=  {this.state.game.id}
-              title = {this.state.game.title}
-              gametype = {this.state.game.gametype}
-              time = {this.state.game.time}
-              date = {this.state.game.date}
-              address = {this.state.game.address}
-              city = {this.state.game.city}
-              zip = {this.state.game.zip}
-              number_of_players = {this.state.game.number_of_players}
-              handleSubmit = {this.handleCommentSubmit}
-              handlerFunction = {this.handleCommentChange}
-              handleFormClear = {this.handleFormClear}
-              comment_content = {this.state.comment}
-            />
+        <div>
+          <div className='row'>
+            <div className='columns small-12 medium-8'>
+              <GameShow
+                handleDelete = {this.handleDelete}
+                current_user={this.state.currentUser}
+                key = {this.state.game.id}
+                id=  {this.state.game.id}
+                title = {this.state.game.title}
+                gametype = {this.state.game.gametype}
+                time = {this.state.game.time}
+                date = {this.state.game.date}
+                address = {this.state.game.address}
+                city = {this.state.game.city}
+                zip = {this.state.game.zip}
+                number_of_players = {this.state.game.number_of_players}
+                handleSubmit = {this.handleCommentSubmit}
+                handlerFunction = {this.handleCommentChange}
+                handleFormClear = {this.handleFormClear}
+                comment_content = {this.state.comment}
+              />
+            </div>
+
+            <div className="columns small-12 medium-4">
+              <div id='LOOKHERE'>
+                <h4 class='text-center'> Comments </h4>
+                <hr />
+                {all_comments}
+              </div>
+            </div>
           </div>
 
-          <div className='LOOKHERE'>
-            {all_comments}
+          <div className='row'>
+            <div className="columns small-4">
+              <div id="button-group">
+                <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
+                <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
+              </div>
+            </div>
           </div>
-
-
-          <div className="button-group">
-            <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
-            <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
-          </div>
-
         </div>
       )
     }

@@ -5,8 +5,12 @@ const CommentTile = (props) => {
   // username = this
   return(
     <div>
-      <strong> {props.user.first_name} {props.user.last_name}: </strong>
-      {props.comment}
+      <div className='row small-centered'>
+        <div className='columns small-12'>
+          <strong> {props.user.first_name} {props.user.last_name}: </strong>
+          {props.comment}
+        </div>
+      </div>
     </div>
   )
 }
