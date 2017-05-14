@@ -7,7 +7,7 @@ class Api::V1::GamesController < Api::V1::BaseController
 
   def show
     game = Game.find(params[:id])
-    render json: game, user: current_user 
+    render json: game, user: current_user
   end
 
   def create
@@ -15,7 +15,6 @@ class Api::V1::GamesController < Api::V1::BaseController
     parsed = JSON.parse(body)
     game = Game.new(parsed)
 
-    # HTTPrequest.call( // some address)
     if game.save!
       render json: game
     end

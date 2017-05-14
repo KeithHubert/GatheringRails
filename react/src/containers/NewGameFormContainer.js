@@ -20,7 +20,7 @@ class NewGameFormContainer extends Component {
       city: '',
       zip: '',
       number_of_players: '',
-      games: []
+      games: [],
     };
   this.handleFormSubmit=this.handleFormSubmit.bind(this);
   this.handleFormClear=this.handleFormClear.bind(this);
@@ -73,6 +73,8 @@ fetch('/api/v1/games', {
 })
 .then(response => response.json())
 .then(responseData => {
+  window.location=`/games/${responseData.id}`
+
   this.setState({ games: [...this.state.games, responseData] });
 });
 }
@@ -119,7 +121,8 @@ handleNumberOfPlayersChange(event) {
 
   render() {
     return(
-      <form className="new-game-form callout">
+      <form className="new-game-form">
+      <h2> New Game Form </h2>
         <TitleField
           content={this.state.title}
           label="Game Title"
@@ -170,7 +173,6 @@ handleNumberOfPlayersChange(event) {
         />
 
         <div className="button-group">
-          <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
           <input className="button" type="submit" value="Submit" onClick={this.handleFormSubmit}/>
         </div>
       </form>
