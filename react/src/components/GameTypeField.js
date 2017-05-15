@@ -9,7 +9,7 @@ const GameTypeField = props => {
 
   return (
     <label>{props.label}
-      <select name={props.name} value={props.selectedOption} onChange={props.handlerFunction}>
+      <select name={props.name} value={props.gameType} onChange={props.handlerFunction}>
         <option value=""></option>
         {optionElements}
       </select>

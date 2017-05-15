@@ -128,7 +128,7 @@ class GameShowContainer extends React.Component {
 
             <div className="columns small-12 medium-4">
               <div id='LOOKHERE'>
-                <h4 class='text-center'> Comments </h4>
+                <h4 className='text-center'> Comments </h4>
                 <hr />
                 {all_comments}
               </div>

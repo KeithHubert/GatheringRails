@@ -1,12 +1,8 @@
 class Api::V1::UsersController < ApplicationController
 
   def index
-    @users = User.all
-    @admins = User.where(admin: true)
     @current_user = current_user
-    respond_to do |format|
-      format.json  { render :json => {:admins => @admins, :current_user => @current_user }}
-    end
+    render json: @current_user
   end
 
   def create
