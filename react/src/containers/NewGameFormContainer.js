@@ -21,13 +21,18 @@ class NewGameFormContainer extends Component {
       number_of_players: '',
       games: [],
       gameTypeOptions: ['Commander/EDH', 'Frontier', 'Legacy', 'Modern', 'Pauper', 'Standard'],
-      selectedOption: ''
+      gametype: ''
     };
 
   this.handleFormSubmit=this.handleFormSubmit.bind(this);
   this.handleFormClear=this.handleFormClear.bind(this);
   this.handleTitleChange=this.handleTitleChange.bind(this);
+
+
   this.handleGameTypeChange=this.handleGameTypeChange.bind(this);
+  this.handleGameSelection = this.handleGameSelection.bind(this);
+
+
   this.handleTimeChange=this.handleTimeChange.bind(this);
   this.handleDateChange=this.handleDateChange.bind(this);
   this.handleAddressChange=this.handleAddressChange.bind(this);
@@ -35,7 +40,7 @@ class NewGameFormContainer extends Component {
   this.handleZipChange=this.handleZipChange.bind(this);
   this.handleNumberOfPlayersChange=this.handleNumberOfPlayersChange.bind(this);
   this.addNewGame=this.addNewGame.bind(this);
-  this.handleGameSelection = this.handleGameSelection.bind(this);
+
   // this.validateGameSelection = this.validateGameSelection.bind(this);
 
 }
@@ -44,28 +49,26 @@ handleFormSubmit(event) {
   event.preventDefault();
   let formPayLoad = {
     title: this.state.title,
-    gameType: this.state.gametype,
     time: this.state.time,
     date: this.state.date,
     address: this.state.address,
     city: this.state.city,
     zip: this.state.zip,
     number_of_players: this.state.number_of_players,
-    selectedOption: this.state.gameSelected
+    gametype: this.state.gametype
   };
   this.addNewGame(formPayLoad);
   this.handleFormClear(event);
 }
 
 handleGameSelection(event) {
-  this.setState({ selectedOption: event.target.value })
+  this.setState({ gametype: event.target.value })
 }
-
 handleFormClear(event) {
   event.preventDefault();
   this.setState({
     title: '',
-    selectedOption: '',
+    gametype: '',
     time: '',
     date: '',
     address: '',
@@ -143,7 +146,7 @@ handleNumberOfPlayersChange(event) {
           label="Game Type"
           name="gameTypeOptions"
           options={this.state.gameTypeOptions}
-          selectedOption={this.state.selectedOption}
+          gameType={this.state.gametype}
           handlerFunction={this.handleGameSelection}
         />
         <TimeField

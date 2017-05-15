@@ -38,10 +38,26 @@ end
     end
   end
 
+  def edit
+  @game = Game.find(params[:id])
+end
+
+def update
+  @game = Game.find(params[:id])
+  @game.update(game_params)
+  redirect_to game_path(@game)
+end
+
+def destroy
+  @game = Game.find(params[:id])
+  @game.destroy
+  redirect_to map_path
+end
+
     def game_params
    params.require(:game).permit(
     :title,
-    :gamtype,
+    :gametype,
     :time,
     :date,
     :address,

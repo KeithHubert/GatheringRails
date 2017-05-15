@@ -19,4 +19,10 @@ class Api::V1::GamesController < Api::V1::BaseController
       render json: game
     end
   end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+  end
+
 end

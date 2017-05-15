@@ -20,11 +20,15 @@
 }
 
 .LOOKHERE {
-  margin-top: 35em
+  border-radius: 2px;
+  border-color: black;
+  border: solid 2px;
+  width: 100%;
+  text-align: left;
 }
 
 .commentbox {
-  margin-bottom: 20em;
-  margin-left: 5em;
+  // margin-bottom: 20em;
+  // margin-left: 5em;
   width: 100%;
 }
