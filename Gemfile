@@ -25,7 +25,8 @@ group :production do
 end
 
 
-
+  gem 'dotenv'
+  gem 'dotenv-rails'  
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'rspec-rails'
