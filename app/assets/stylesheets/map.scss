@@ -45,6 +45,13 @@ $text-shadow: 2px 2px 10px $black;
   }
 }
 
+#search{
+  width: 60%;
+  margin-right: auto;
+  margin-left: 0;
+  transform: translateX(-60%);
+}
+
 #button {
     background-color: $input-background-color;
 }

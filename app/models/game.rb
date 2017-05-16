@@ -25,4 +25,9 @@ def full_address
    full_address = "#{self.address + self.city + self.zip}"
 end
 
+def self.search(search)
+  where("title ILIKE ?
+  OR gametype ILIKE ? OR address ILIKE ? OR time ILIKE ? OR date ILIKE ? OR city ILIKE ? OR zip ILIKE ? OR number_of_players ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+end
+
 end

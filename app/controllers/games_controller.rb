@@ -1,6 +1,13 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!
 
-  def index;
+  def index
+    @games = Game.all.order('created_at DEC')
+      if params[:search]
+        @games = Game.search(params[:search]).order("created_at DESC")
+      else
+        @games = Game.all.order("created_at DESC")
+      end
   end
 
   def new
@@ -10,7 +17,7 @@ class GamesController < ApplicationController
   def show
   @game = Game.find(params[:id])
   # @reviews = @venue.reviews.order(created_at: :desc)
-end
+  end
 
   def create
     @game = Game.new(game_params)
@@ -39,23 +46,23 @@ end
   end
 
   def edit
-  @game = Game.find(params[:id])
-end
+    @game = Game.find(params[:id])
+  end
 
-def update
-  @game = Game.find(params[:id])
-  @game.update(game_params)
-  redirect_to game_path(@game)
-end
+  def update
+    @game = Game.find(params[:id])
+    @game.update(game_params)
+    redirect_to game_path(@game)
+  end
 
-def destroy
-  @game = Game.find(params[:id])
-  @game.destroy
-  redirect_to map_path
-end
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to map_path
+  end
 
-    def game_params
-   params.require(:game).permit(
+  def game_params
+    params.require(:game).permit(
     :title,
     :gametype,
     :time,
@@ -67,8 +74,6 @@ end
     :latitude,
     :longitude,
   )
-end
-
-
+  end
 
 end

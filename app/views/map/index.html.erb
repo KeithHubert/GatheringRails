@@ -11,8 +11,11 @@
     <div id="map" class='' style='width: 100%; height: 400px; '></div>
     <div id='buttons' class='column small 12'>
       <div class='medium-6 columns medium-offset-4 columns'>
-        <%= button_to 'Search Games', games_path, method: :get, id: 'button' %>
         <%= button_to 'List a New Game', new_game_path, method: :get, id: 'button' %>
+        <%= form_tag(games_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Games", class: "search-bar"%>
+        <%= submit_tag "Search", :name => nil %>
+        <% end %>
       </div>
     </div>
   </div>

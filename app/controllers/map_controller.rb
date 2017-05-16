@@ -1,6 +1,8 @@
 require 'gmaps4rails'
 
 class MapController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @games = Game.where.not(lat: nil).where.not(lat: 0).where.not(lat: 1)
     @unlisted = Game.where(lat: nil)
