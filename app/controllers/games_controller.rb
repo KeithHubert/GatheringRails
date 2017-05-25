@@ -16,7 +16,6 @@ class GamesController < ApplicationController
 
   def show
   @game = Game.find(params[:id])
-  # @reviews = @venue.reviews.order(created_at: :desc)
   end
 
   def create
