@@ -6,6 +6,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_JAVASCRIPT_KEY'] %>"></script>
+    <script src="https://use.fontawesome.com/d7f90b4c23.js"></script>
   </head>
 
   <body>
@@ -21,10 +22,14 @@
   <div class="title-bar-right">
 
     <div class="top-bar-right">
+        <% if user_signed_in? %>
+
+        <%end%>
 
       <ul class="menu sign-up">
         <% if user_signed_in? %>
           <li>
+
             <%= link_to "Signed In As #{current_user.first_name}",
               user_path(current_user)
             %>
@@ -35,6 +40,13 @@
               destroy_user_session_path, method: :delete
             %>
           </li>
+
+          <% if @unread != [] %>
+            <li><a href='/conversations'><i class="fa fa-comments" id='unread' aria-hidden="true"></i></a></li>
+          <% else %>
+            <li><a href='/conversations'><i class="fa fa-comments" aria-hidden="true"></i></a></li>
+         <% end %>
+         
         <% else %>
           <li> <%= link_to "Sign In", new_user_session_path %> </li>
           <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
