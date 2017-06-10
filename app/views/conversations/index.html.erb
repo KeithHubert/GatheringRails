@@ -2,9 +2,14 @@
   <div class="ui_segment">
     <h3>Mailbox</h3>
 
-    <div class="ui list">
+    <div class="ui_list">
       <div class="item">
         <% @conversations.each do |conversation| %>
+        <% if conversation.messages.where(read: false).where.not(user_id: current_user.id) != [] %>
+          <i class="fa fa-check-circle" id='unread' aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-check-circle-o" id='read' aria-hidden="true"></i>
+        <% end %>
           <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
             <% if conversation.sender_id == current_user.id %>
               <% recipient = User.find(conversation.recipient_id) %>
@@ -21,14 +26,16 @@
 
   <div class="ui_segment">
     <h3>All Users</h3>
-    <div class="ui list">
+    <div class="ui_list">
       <% @users.each do |user| %>
         <% if user.id != current_user.id %>
         <div class="item">
-          <%= user.first_name %> <%= user.last_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+          <%=user.first_name %> <%= user.last_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
         </div>
         <% end %>
       <% end %>
     </div>
   </div>
+
+
 </div>
