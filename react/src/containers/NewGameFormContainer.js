@@ -21,18 +21,14 @@ class NewGameFormContainer extends Component {
       number_of_players: '',
       games: [],
       gameTypeOptions: ['Commander/EDH', 'Frontier', 'Legacy', 'Modern', 'Pauper', 'Standard'],
-      gametype: ''
+      gametype: '',
     };
 
   this.handleFormSubmit=this.handleFormSubmit.bind(this);
   this.handleFormClear=this.handleFormClear.bind(this);
   this.handleTitleChange=this.handleTitleChange.bind(this);
-
-
   this.handleGameTypeChange=this.handleGameTypeChange.bind(this);
   this.handleGameSelection = this.handleGameSelection.bind(this);
-
-
   this.handleTimeChange=this.handleTimeChange.bind(this);
   this.handleDateChange=this.handleDateChange.bind(this);
   this.handleAddressChange=this.handleAddressChange.bind(this);
@@ -55,7 +51,7 @@ handleFormSubmit(event) {
     city: this.state.city,
     zip: this.state.zip,
     number_of_players: this.state.number_of_players,
-    gametype: this.state.gametype
+    gametype: this.state.gametype,
   };
   this.addNewGame(formPayLoad);
   this.handleFormClear(event);
