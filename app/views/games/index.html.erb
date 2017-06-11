@@ -5,13 +5,10 @@
 
 <div class="small-10 medium-4 small-centered text-center columns game-box">
     <div class="small-10 medium-4 small-centered text-center columns game-inner">
+
 <% @games.each do |game| %>
 
-
-<%= link_to game.title, game_path(game) %><br/>
-
-
-<% if @games.blank? %>
+<% else @games.blank? %>
   <h4> No Results  For: <%= params[:search] %></h4>
 
 <% end %>

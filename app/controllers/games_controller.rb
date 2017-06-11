@@ -73,6 +73,6 @@ class GamesController < ApplicationController
     :latitude,
     :longitude,
   )
-  end
 
+  end
 end
