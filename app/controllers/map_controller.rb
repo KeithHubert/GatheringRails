@@ -4,7 +4,7 @@ class MapController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @games = Game.where.not(lat: nil).where.not(lat: 0).where.not(lat: 1).where("date > ?", Time.zone.now)
+    @games = Game.where.not(lat: nil).where.not(lat: 0).where.not(lat: 1).where("date > ?", Time.zone.now + 1.day)
     @unlisted = Game.where(lat: nil)
     @unlisted += Game.where(lat: 1)
     @hash = Gmaps4rails.build_markers(@games) do |game, marker|
