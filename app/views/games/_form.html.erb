@@ -1,0 +1,46 @@
+<%= form_for @game do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :number_of_players, value: 'How many players?' %>
+    <%= f.number_field :number_of_players, default_value: '2' %>
+  </div>
+
+  <%= f.hidden_field :creator, value: current_user.id %>
+
+  <div>
+    <%= f.label :gametype, value: 'Gametype' %>
+    <%= f.select :gametype, [['Weekly','Weekly'], ['Every 2 Weeks', 'Every 2 Weeks'], ['Monthly', 'Monthly'], ['Other','Other']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
+  </div>
+
+  <div>
+    <%= f.label :time %>
+    <%= f.time_field :time %>
+  </div>
+
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :address, value: 'Please supply a valid address' %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <%= f.submit id: 'special' %>
+<% end %>

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { Router, Route, Link, browserHistory, IndexRoute} from 'react-router'
 import Home from "../components/Home";
-import GameIndexContainer from "./GameIndexContainer";
 import GameShowContainer from "./GameShowContainer";
-import NewGameFormContainer from "./NewGameFormContainer";
 
 class App extends React.Component {
   constructor(props) {
