@@ -23,9 +23,9 @@ class GamesController < ApplicationController
     if user_signed_in?
       @game = Game.create(game_params)
       require_relative 'httprequest.rb'
-      if @game.location.include?(' ') && !@game.location.include?('.')
+      if @game.address.include?(' ') && !@game.address.include?('.')
         require_relative 'httprequest.rb'
-        results = Httprequest.call(@game.location)
+        results = Httprequest.call(@game.address)
         @game.lat = results[0]
         @game.lng = results[1]
       end
@@ -67,8 +67,6 @@ class GamesController < ApplicationController
     :time,
     :date,
     :address,
-    :city,
-    :zip,
     :number_of_players,
     :latitude,
     :longitude,

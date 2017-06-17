@@ -28,18 +28,8 @@
   </div>
 
   <div>
-    <%= f.label :address, value: 'Please supply a valid address' %>
+    <%= f.label :location, value: 'Please supply a full valid address to be added to the map.' %>
     <%= f.text_field :address %>
-  </div>
-
-  <div>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </div>
-
-  <div>
-    <%= f.label :zip %>
-    <%= f.text_field :zip %>
   </div>
 
   <%= f.submit id: 'special' %>
