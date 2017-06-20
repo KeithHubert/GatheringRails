@@ -15,7 +15,10 @@ class GamesController < ApplicationController
   end
 
   def show
-  @game = Game.find(params[:id])
+    authenticate_user!
+    @game = Game.find(params[:id])
+    @request = Request.new
+    @signup = Signup.new
   end
 
   def create
@@ -70,6 +73,7 @@ class GamesController < ApplicationController
     :number_of_players,
     :latitude,
     :longitude,
+    :creator
   )
 
   end

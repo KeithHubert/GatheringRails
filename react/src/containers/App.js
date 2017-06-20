@@ -14,12 +14,8 @@ class App extends React.Component {
     return(
     <Router history={browserHistory}>
       <Route path="/" component={Home}/>
-      <Route path="/games" component={GameIndexContainer}/>
-      <Route path="/games/new" component={NewGameFormContainer}/>
       <Route path="/games/:id" component={GameShowContainer}/>
       <Route path='/games/:id/edit' component={GameShowContainer} />
-
-      <Route path="/map" component={GameIndexContainer}/>
      </Router>
     )
   }

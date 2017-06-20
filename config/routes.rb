@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :games
+  resources :games do
+    resources :signups, only: [:create, :destroy]
+    resources :requests, only: [:create, :destroy]
+    resources :comments, only: [:create]
+  end
 
   resources :comments
 
