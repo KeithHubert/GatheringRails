@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615025517) do
+ActiveRecord::Schema.define(version: 20170617045931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,9 @@ ActiveRecord::Schema.define(version: 20170615025517) do
     t.string   "time",              default: "", null: false
     t.string   "date",              default: "", null: false
     t.string   "address",           default: "", null: false
-    t.string   "city",              default: "", null: false
-    t.string   "zip",               default: "", null: false
     t.string   "number_of_players", default: "", null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.float    "latitude"
-    t.float    "longitude"
     t.float    "lat"
     t.float    "lng"
     t.string   "creator"
@@ -57,6 +53,25 @@ ActiveRecord::Schema.define(version: 20170615025517) do
     t.datetime "updated_at",                      null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "game_id",    null: false
+    t.text     "body",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_requests_on_game_id", using: :btree
+    t.index ["user_id"], name: "index_requests_on_user_id", using: :btree
+  end
+
+  create_table "signups", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "game_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_signups_on_game_id", using: :btree
+    t.index ["user_id"], name: "index_signups_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
