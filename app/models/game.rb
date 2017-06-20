@@ -3,6 +3,8 @@ class Game < ApplicationRecord
   has_many :users, through: :users_games
   has_many :user_games
   has_many :comments
+  has_many :signups
+  has_many :requests
 
   validates :title, presence: true
   validates :gametype, presence: true
@@ -10,6 +12,8 @@ class Game < ApplicationRecord
   validates :date, presence: true
   validates :address, presence: true
   validates :number_of_players, presence: true
+  validates :creator, presence: true, numericality: true
+
 
   geocoded_by :address, :latitude  => :lat, :longitude => :lng
   after_validation :geocode, if: :address_changed?
