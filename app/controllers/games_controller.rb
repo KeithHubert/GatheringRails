@@ -1,17 +1,6 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
-    @games = Game.all.order('created_at DEC')
-      if params[:search]
-        @games = Game.search(params[:search]).order("created_at DESC")
-      else
-        @games = Game.all.order("created_at DESC")
-      end
-  end
-
-  def new
-    @game = Game.new
+    @games = Game.order(created_at: :desc)
   end
 
   def show
@@ -21,8 +10,16 @@ class GamesController < ApplicationController
     @signup = Signup.new
   end
 
+  def new
+    if user_signed_in?
+      @game = Game.new
+    else
+      flash[:notice] = 'Please sign in to add a game'
+      redirect_to new_user_session_path
+    end
+  end
+
   def create
-    @game = Game.new(game_params)
     if user_signed_in?
       @game = Game.create(game_params)
       require_relative 'httprequest.rb'
@@ -34,7 +31,7 @@ class GamesController < ApplicationController
       end
 
       if @game.save
-       flash[:notice] = 'Thank you for adding this listing to our database!'
+        flash[:notice] = 'Thank you for adding this listing to our database!'
         Signup.create(user: current_user, game: @game)
         redirect_to game_path(@game)
       else
@@ -48,20 +45,52 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
+    if user_signed_in?
+      @game = Game.find(params[:id])
+      unless current_user.id == @game.creator
+        flash[:alert] = "UNAUTHORIZED"
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      flash[:alert] = "UNAUTHORIZED"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
-    redirect_to game_path(@game)
+    @game.update_attributes(game_params)
+    if @game.location.include?(' ') && !@game.location.include?('.')
+      require_relative 'httprequest.rb'
+      results = Httprequest.call(@game.location)
+      @game.lat = results[0]
+      @game.lng = results[1]
+    end
+    if @game.save
+      flash[:notice] = "Thank you for editing this listing!"
+      redirect_to game_path(@game)
+    else
+      flash[:notice] = @game.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   def destroy
     @game = Game.find(params[:id])
-    @game.destroy
-    redirect_to map_path
+    if user_signed_in? && (current_user.id == @game.creator)
+      Comment.where(game: @game).delete_all
+      Signup.where(game: @game).delete_all
+      Request.where(game: @game).delete_all
+      @game.delete
+      flash[:alert] = "You have deleted this game listing successfully"
+      redirect_to games_path
+    else
+      flash[:alert] = 'UNAUTHORIZED'
+      redirect_back(fallback_location: root_path)
+    end
   end
+
+  private
 
   def game_params
     params.require(:game).permit(
@@ -74,6 +103,7 @@ class GamesController < ApplicationController
     :latitude,
     :longitude,
     :creator
+    :username
   )
 
   end

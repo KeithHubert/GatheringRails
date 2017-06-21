@@ -14,7 +14,7 @@
 
   <div>
     <%= f.label :gametype, value: 'Gametype' %>
-    <%= f.select :gametype, [['Weekly','Weekly'], ['Every 2 Weeks', 'Every 2 Weeks'], ['Monthly', 'Monthly'], ['Other','Other']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
+    <%= f.select :gametype, [['Standard','Standard'], ['Modern', 'Modern'], ['Frontier', 'Frontier'], ['Limited / Draft', 'Limited / Draft'], ['Vintage', 'Vintage'], ['Legacy','Legacy'], ['Pauper', 'Pauper']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
   </div>
 
   <div>

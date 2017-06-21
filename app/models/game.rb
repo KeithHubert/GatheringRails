@@ -1,7 +1,6 @@
 class Game < ApplicationRecord
 
-  has_many :users, through: :users_games
-  has_many :user_games
+  has_many :users, through: :signups
   has_many :comments
   has_many :signups
   has_many :requests
@@ -29,7 +28,7 @@ end
 
 def self.search(search)
   where("title ILIKE ?
-  OR gametype ILIKE ? OR address ILIKE ? OR time ILIKE ? OR date ILIKE ? OR city ILIKE ? OR zip ILIKE ? OR number_of_players ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  OR gametype ILIKE ? OR address ILIKE ? OR time ILIKE ? OR date ILIKE ? OR number_of_players ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
 end
 
 end

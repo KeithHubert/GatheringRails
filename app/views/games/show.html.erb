@@ -37,7 +37,7 @@
         <div class='small-2 columns' style="font-size: 20px"><%= signup.user.first_name %></div>
           <% if current_user == signup.user %>
             <div class='small-5 columns'><%= button_to 'Leave Game', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
-          <% elsif current_user.id == @game.dm_id %>
+          <% elsif current_user.id == @game.creator %>
             <div class='small-5 columns'><%= button_to 'Remove Player', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
           <% end %>
       </div>
@@ -78,18 +78,22 @@
     <hr />
     <% end %>
 
+
     <h3>Your Games:</h3>
-      <% if current_user.signups == [] %>
+      <% if current_user.games == [] %>
         You have no games!
       <% end %>
-      <% current_user.signups.each do |signup| %>
+
+      <% current_user.games.each do |game| %>
+
         <p>
-          <%= link_to signup.game.title, game_path(signup.game) %>: Role -
-          <% if signup.game.creator == current_user.id %>
+          <%= link_to game.title, game_path(game.id) %>: Role -
+          <% if @game.creator == current_user.id %>
             Host
           <% else %>
             Player
           <% end %>
+
         </p>
       <% end %>
       <hr />

@@ -5,8 +5,6 @@
     <hr />
   </div>
 
-
-
   <div id = 'background' class='columns small-8'>
     <div id="map" class='' style='width: 100%; height: 400px; '></div>
     <div id='buttons' class='column small 12'>
@@ -20,13 +18,19 @@
     </div>
   </div>
 
-  <div id="app" class='small-4 columns'> </div>
+  <div id="GameTile" class='small-4 columns'>
+    <h4> Recently Added Games </h4>
+    <% Game.order(id: :desc).limit(5).each do |g| %>
+    <%= link_to g.title, game_path(g) %>
+  </br>
+    <%= "#{g.gametype}" %>
+  </br>
+   <%= "#{g.address}" %>
+  <% end %>
+  </div>
+  </div>
 
 </div>
-
-
-
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_JAVASCRIPT_KEY'] %>"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
