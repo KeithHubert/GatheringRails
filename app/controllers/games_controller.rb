@@ -103,6 +103,7 @@ class GamesController < ApplicationController
     :latitude,
     :longitude,
     :creator
+    :username
   )
 
   end
