@@ -19,7 +19,6 @@ class HomeContainer extends React.Component {
       fetch(`/api/v1/users`, {credentials: 'same-origin'})
       .then(response => response.json())
       .then(responseData => {
-        debugger;
         this.setState({
           current_user: responseData.current_user
         });
@@ -33,7 +32,7 @@ class HomeContainer extends React.Component {
       return (
         <div>
           <div className='row'>
-            <div className='columns small-12 medium-8'>
+            <div className='columns small-12'>
               <Home
                 current_user={this.state.current_user}
               />

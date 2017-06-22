@@ -9,7 +9,7 @@ const Home = (props) => {
           <h5>The World Is Your Playground</h5>
             <div className="center">
 
-          {props.current_user === null &&
+          {props.current_user === '' &&
             <a href="/users/sign_up">Sign Up</a>
           }
 
@@ -25,12 +25,6 @@ const Home = (props) => {
       <div className="summary">
         <p>Gathering is the first of it’s kind pairer for
           Magic the Gathering players. Simply log in and find players near you.
-        </p>
-      </div>
-
-      <div className="footer">
-        <p> Magic: The Gathering is a Trademark of Wizards of the Coast, Inc. /
-        Hasbro, Inc. This site is unaffiliated.
         </p>
       </div>
     </div>

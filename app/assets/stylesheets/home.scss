@@ -109,7 +109,7 @@ $purple: #2A0631;
       font-family: sans-serif;
       line-height:1.7;
       color:#4A4A4A;
-      margin:20px;
+      margin:15px;
       text-align: center;
       font-weight: 300;
     }
@@ -118,5 +118,7 @@ $purple: #2A0631;
     display:none !important;
   }
 
-.header {
+.footer {
+  background-color: black;
+  color: white;
 }
