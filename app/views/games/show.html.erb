@@ -26,9 +26,6 @@
 
   <div id="map" class='' style='width: 100%; height: 400px; '></div>
 
-
-
-
   <p>We are playing <%= @game.gametype %>:
     <%= @game.date %> at <%= DateTime.parse(@game.time).strftime("%l:%M%p") %> at <%= @game.address %></p>
   <p>Description: <%= @game.title %></p>
