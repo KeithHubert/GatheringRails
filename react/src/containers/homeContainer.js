@@ -26,7 +26,8 @@ class HomeContainer extends React.Component {
       });
     }
 
-    }
+
+
 
   render() {
       return (

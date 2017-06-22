@@ -1,7 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
   def index
-    binding.pry
     @current_user = current_user
     render json: @current_user
   end
