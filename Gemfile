@@ -18,7 +18,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'httpclient'
 gem 'active_model_serializers'
-ruby '2.3.4'
+ruby '2.3.3'
 
 group :production do
   gem "puma"
