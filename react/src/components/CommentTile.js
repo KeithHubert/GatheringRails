@@ -6,7 +6,7 @@ const CommentTile = (props) => {
     <div>
       <div className='row small-centered'>
         <div className='columns small-12'>
-        <strong> {props.username}: </strong> {props.comment}
+        <strong> {props.user.username}: </strong> {props.comment}
         </div>
       </div>
     </div>

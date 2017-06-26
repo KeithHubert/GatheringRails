@@ -93,7 +93,6 @@ class GameShowContainer extends React.Component {
 
   render() {
     let all_comments = this.state.comments.map((comment) => {
-      debugger;
       return(
         <CommentTile
           key={comment.id}
