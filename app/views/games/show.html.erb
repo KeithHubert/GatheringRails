@@ -32,7 +32,7 @@
   <p>We are playing <%= @game.gametype %>:
     <%= @game.date %> at <%= DateTime.parse(@game.time).strftime("%l:%M%p") %> at <%= @game.address %></p>
   <p>Description: <%= @game.title %></p>
-  <p>Game run by: <%= User.find(@game.creator).username %></p>
+  <p>Game run by: <%= link_to User.find(@game.creator).username, user_path(@game.creator)  %></p>
   <p>Player Total: <%= @game.number_of_players %></p>
   <p>
     <h3>rs: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3>
