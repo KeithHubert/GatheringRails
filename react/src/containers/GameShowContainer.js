@@ -111,14 +111,6 @@ class GameShowContainer extends React.Component {
                 current_user={this.state.currentUser}
                 key = {this.state.game.id}
                 id=  {this.state.game.id}
-                title = {this.state.game.title}
-                gametype = {this.state.game.gametype}
-                time = {this.state.game.time}
-                date = {this.state.game.date}
-                address = {this.state.game.address}
-                city = {this.state.game.city}
-                zip = {this.state.game.zip}
-                number_of_players = {this.state.game.number_of_players}
                 handleSubmit = {this.handleCommentSubmit}
                 handlerFunction = {this.handleCommentChange}
                 handleFormClear = {this.handleFormClear}
