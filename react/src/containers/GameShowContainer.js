@@ -38,6 +38,7 @@ class GameShowContainer extends React.Component {
       user_id: this.state.currentUser.id,
       game_id: this.state.game.id
     };
+
     this.addNewComment(formPayLoad);
     this.handleFormClear(event);
     // post this comment to my database!
@@ -92,6 +93,7 @@ class GameShowContainer extends React.Component {
 
   render() {
     let all_comments = this.state.comments.map((comment) => {
+      debugger;
       return(
         <CommentTile
           key={comment.id}

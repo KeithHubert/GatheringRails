@@ -5,7 +5,7 @@ const GameTile = (props) => {
   return(
       <div className="game-tile">
       <h6><a href={`/games/${props.id}`}>{props.title}</a></h6>
-      <p>{props.gametype} - {props.city} </p>
+      <p>{props.gametype}</p>
     </div>
   )
 }

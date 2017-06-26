@@ -35,10 +35,10 @@
   <p>Game run by: <%= link_to User.find(@game.creator).username, user_path(@game.creator)  %></p>
   <p>Player Total: <%= @game.number_of_players %></p>
   <p>
-    <h3>rs: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3>
+    <h3>Total Players: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3>
     <% @game.signups.each do |signup| %>
       <div class='small-12 columns'>
-        <div class='small-2 columns' style="font-size: 20px"><%= signup.user.username %></div>
+        <div class='small-2 columns' style="font-size: 20px"><%=link_to signup.user.username, user_path(signup.user) %></div>
           <% if current_user == signup.user %>
             <div class='small-5 columns'><%= button_to 'Leave Game', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
           <% elsif current_user.id == @game.creator %>

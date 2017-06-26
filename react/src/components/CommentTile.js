@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const CommentTile = (props) => {
-  debugger;
   return(
     <div>
       <div className='row small-centered'>
