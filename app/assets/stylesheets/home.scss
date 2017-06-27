@@ -9,10 +9,11 @@ $purple: #2A0631;
 
 
 *, *:before, *:after {
-      box-sizing: inherit;
+      box-sizing: border-box;
     }
 
     .wrapper {
+      text-align: center;
       width:100%;
       height:70vh;
       overflow: hidden;
@@ -94,6 +95,7 @@ $purple: #2A0631;
     text-align: center;
     margin:auto;
     display:block;
+    border-radius: 5px;
     a {
       font-family: 'Helvetica Neue', sans-serif;
       font-weight: bold;
@@ -109,7 +111,7 @@ $purple: #2A0631;
       font-family: sans-serif;
       line-height:1.7;
       color:#4A4A4A;
-      margin:15px;
+      margin:5px;
       text-align: center;
       font-weight: 300;
     }
@@ -119,6 +121,25 @@ $purple: #2A0631;
   }
 
 .footer {
-  background-color: black;
+  text-align: center;
+  background-color: rgb(25, 0, 36);
   color: white;
-}
+  font-size: 2vmin;
+  padding-bottom: 35px;
+  padding-top: 5px;
+  margin-top: 30px;
+
+  a{
+    color: white;
+    font-size: 3vmin;
+    }
+  }
+
+  .summary {
+    p {
+      padding-top: 20px;
+    color: black;
+    font-size: 2.8vmin;
+    font-weight: 300;
+    }
+  }

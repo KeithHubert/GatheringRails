@@ -8,7 +8,6 @@ const Home = (props) => {
         <div className="wrapper">
           <h5>The World Is Your Playground</h5>
             <div className="center">
-
           {props.current_user === '' &&
             <a href="/users/sign_up">Sign Up</a>
           }

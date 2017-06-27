@@ -47,72 +47,12 @@ handleDelete() {
 
 
   render() {
-
   return(
   <div>
     <div className="row">
-
-      <div className="columns small-12 site-tile">
-        <h3 className= 'games-title'>{this.props.title}</h3>
-        <p> {this.props.description} </p>
-
-      </div>
-    </div>
-
-  <div className="game-show row">
-    <div className='columns small-3 medium-3'>
-      <h6> Title </h6>
-      <ul>{this.props.title}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Creator </h6>
-      <ul>{this.props.creator}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Format </h6>
-      <ul>{this.props.gametype}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Time </h6>
-      <ul>{this.props.time}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Date </h6>
-      <ul>{this.props.date}</ul>
-    </div>
   </div>
 
-  <div className="game-show row">
-    <div className='columns small-3 medium-3'>
-      <h6> Address </h6>
-      <ul>{this.props.address}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> City </h6>
-      <ul>{this.props.city}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Zip </h6>
-      <ul>{this.props.zip}</ul>
-    </div>
-
-    <div className='columns small-3 medium-3'>
-      <h6> Players </h6>
-      <ul>{this.props.number_of_players}</ul>
-    </div>
-  </div>
   <div>
-
-    <button type="button" onClick={this.props.handleDelete} id="delete-button">Delete Game</button>
-  </div>
-
-  <div className='row'>
     <form id={this.props.game_Id} onSubmit={this.props.handleSubmit}>
       <CommentField
         form = {this.props.user_id}
