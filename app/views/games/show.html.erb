@@ -3,20 +3,6 @@
 
     <h1>
       <%= @game.title %>
-      <% if current_user && (Signup.where(user: current_user, game: @game) == []) && (Request.where(user: current_user, game: @game) == []) %>
-        <div class='large-4 columns medium-5 columns small-6 columns float-right'>
-          <%= form_for [@game, @request] do |f| %>
-            <%= f.text_field :body, value: "Please tell us why you'd like to join" %>
-            <%= f.submit value:'Request to Join', id: 'button' %>
-          <% end %>
-        </div>
-      <% end %>
-      <% if (Request.where(user: current_user, game: @game) != []) %>
-        <div class='large-4 columns medium-5 columns small-6 columns float-right'>
-          <% @request = Request.where(user: current_user, game: @game).first %>
-          <%= button_to 'Delete Request', game_request_path(@game, @request), method: :delete, data: { confirm: "Are you sure?" }, id: 'button' %>
-        </div>
-      <% end %>
     </h1>
   </div>
 
@@ -43,6 +29,22 @@
       </div>
     <% end %>
   </p>
+  <% if current_user && (Signup.where(user: current_user, game: @game) == []) && (Request.where(user: current_user, game: @game) == []) %>
+    <div class='large-4 columns medium-5 columns small-6 columns float-right'>
+      <div class='request'>
+        <%= form_for [@game, @request] do |f| %>
+        <%= f.text_field :body, placeholder: "Please tell us why you'd like to join", id: 'field' %>
+        <%= f.submit value:'Request to Join', id: 'button' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% if (Request.where(user: current_user, game: @game) != []) %>
+    <div class='large-4 columns medium-2 columns small-6 columns float-right'>
+      <% @request = Request.where(user: current_user, game: @game).first %>
+      <%= button_to 'Delete Request', game_request_path(@game, @request), method: :delete, data: { confirm: "Are you sure?" }, id: 'button' %>
+    </div>
+  <% end %>
 </br>
 </br>
 </br>
