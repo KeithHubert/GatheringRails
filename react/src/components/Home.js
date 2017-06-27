@@ -13,7 +13,7 @@ const Home = (props) => {
           }
 
           </div>
-            <video id="background-video" loop autoPlay>
+            <video id="background-video" loop autoPlay poster="https://s3.us-east-2.amazonaws.com/tamoback/tarmo.jpg">
             <source src="https://s3.us-east-2.amazonaws.com/gathererbackground/animation.mp4" type="video/mp4" />
             Your browser does not support the video tag.
             </video>
