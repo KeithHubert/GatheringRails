@@ -52,7 +52,7 @@ handleDelete() {
     <div className="row">
   </div>
 
-  <div className='row'>
+  <div>
     <form id={this.props.game_Id} onSubmit={this.props.handleSubmit}>
       <CommentField
         form = {this.props.user_id}
