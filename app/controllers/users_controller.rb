@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if user_signed_in?
-      @user = current_user
+    @user = current_user
     # else
     #   flash[:notice] = 'Please sign in first'
     #   redirect_to new_user_session_path
