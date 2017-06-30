@@ -38,4 +38,13 @@
   </div>
 </div>
 
+<div>
+  <h1> About Me </h1>
+  <% if @user.bio.empty?%>
+   This user does not have a bio yet.
+  <% else %>
+  <%= @user.bio %>
+  <% end %>
+</div>
+
 <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>

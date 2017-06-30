@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.email = params[:user][:email]
-    @user.avatar_url = params[:user][:avatar_url]
+    # @user.avatar_url = params[:user][:avatar_url]
     @user.bio = params[:user][:bio]
 
     if @user.save
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @user.email = params[:user][:email]
-      @user.avatar_url = params[:user][:avatar_url]
+      # @user.avatar_url = params[:user][:avatar_url]
       @user.bio = params[:user][:bio]
       render :edit
     end

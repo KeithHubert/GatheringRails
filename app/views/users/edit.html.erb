@@ -8,16 +8,6 @@
   <%= f.label :bio, "What do you want others to know about you? Add a bio here." %>
   <%= f.text_field :bio %>
 
-  <%= f.label :profile_pic_url, "Avatar" %>
-  <%= f.text_field :profile_pic_url %>
-
-  Or you can upload your own avatar!
-  <%= f.label :avatar, "Avatar Upload" %>
-  <%= f.file_field :avatar %>
-
-  Delete my avatar
-  <%= check_box_tag "delete-avatar", "1"%><br/>
-
   <%= f.submit "Update Profile", :id=>"Update Profile" %>
 <% end %>
 
