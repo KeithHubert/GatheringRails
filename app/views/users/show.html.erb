@@ -1,3 +1,5 @@
 <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
 
 <h3> <%= @user.email %> </h3>
+
+<%= button_to 'Delete Account', current_user.destroy, method: :delete, data: { confirm: "Are you sure? This action cannot be undone." }, id: 'special' %>
