@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @reviews = @user.reviews.order(created_at: :desc)
   end
 
   def edit
@@ -19,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.email = params[:user][:email]
     @user.avatar_url = params[:user][:avatar_url]
+    @user.bio = params[:user][:bio]
 
     if @user.save
       flash[:notice] = 'Success! Your profile has been updated.'
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     else
       @user.email = params[:user][:email]
       @user.avatar_url = params[:user][:avatar_url]
+      @user.bio = params[:user][:bio]
       render :edit
     end
   end
