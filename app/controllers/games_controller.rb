@@ -102,7 +102,8 @@ class GamesController < ApplicationController
     :number_of_players,
     :latitude,
     :longitude,
-    :creator
+    :creator,
+    :username
   )
 
   end

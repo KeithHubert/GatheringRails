@@ -22,9 +22,9 @@ class Game < ApplicationRecord
 #   [address, city, zip].compact.join(', ')
 # end
 
-def full_address
-   full_address = "#{self.address + self.city + self.zip}"
-end
+# def full_address
+#    full_address = "#{self.address + self.city + self.zip}"
+# end
 
 def self.search(search)
   where("title ILIKE ?

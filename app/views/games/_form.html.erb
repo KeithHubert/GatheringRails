@@ -14,7 +14,7 @@
 
   <div>
     <%= f.label :gametype, value: 'Gametype' %>
-    <%= f.select :gametype, [['Standard','Standard'], ['Modern', 'Modern'], ['Frontier', 'Frontier'], ['Limited / Draft', 'Limited / Draft'], ['Vintage', 'Vintage'], ['Legacy','Legacy'], ['Pauper', 'Pauper']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
+    <%= f.select :gametype, [['Standard','Standard'], ['Modern', 'Modern'], ['EDH', 'EDH'], ['Frontier', 'Frontier'], ['Limited / Draft', 'Limited / Draft'], ['Vintage', 'Vintage'], ['Legacy','Legacy'], ['Pauper', 'Pauper']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
   </div>
 
   <div>

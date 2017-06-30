@@ -40,3 +40,9 @@
     <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button' %>
   </div>
 </div> -->
+
+
+
+
+<%= button_to 'Delete Account', current_user.destroy, method: :delete, data: { confirm: "Are you sure? This action cannot be undone." }, id: 'special' %>
+

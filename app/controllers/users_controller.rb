@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    if user_signed_in?
+      @user = current_user
+    else
+      flash[:notice] = 'Please sign in first'
+      redirect_to new_user_session_path
+    end
+
   end
 
   def edit
@@ -34,7 +40,6 @@ class UsersController < ApplicationController
   def destroy
     this_user = User.find(params[:id])
     this_user.destroy
-
-    redirect_to users_path
+    redirect_to root_path
   end
 end

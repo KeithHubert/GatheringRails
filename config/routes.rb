@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
 
   root 'home#index'
-
+  resources :profiles, only: [:edit]
   resources :users
 
   resources :games do
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :comments
-
   resources :map, only: [:index]
 
   namespace :api do

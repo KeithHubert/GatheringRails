@@ -43,7 +43,6 @@ class CommentContainer extends Component {
   .then(response => response.json())
   .then(responseData => {
     this.setState({ games: [...this.state.comment, responseData] })
-    // window.whatever path correct showpage
   })
   }
 
@@ -52,13 +51,13 @@ class CommentContainer extends Component {
       <form className="comment" onSubmit={this.handleFormSubmit}>
         <TextField
           content={this.state.comment}
-          label='Comment'
+          label='comment'
           name='comment'
           handlerFunction={this.handleCommentChange}
         />
         <div className="button-group">
           <button className="button" onClick={this.handleClearForm}>Clear</button>
-          <input className="button" type="submit" value="Submit" />
+          <input className="button" type="submit" value="submit" />
         </div>
       </form>
     );

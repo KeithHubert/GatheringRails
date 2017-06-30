@@ -3,64 +3,59 @@
   <head>
     <title>Gathering</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_JAVASCRIPT_KEY'] %>"></script>
     <script src="https://use.fontawesome.com/d7f90b4c23.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div class="title-bar">
-      <div class="title-bar-left">
-       <a href="/"><img class="warrior" src="https://s3.us-east-2.amazonaws.com/gathererbackground/arrowssmall.jpg" /></a>
-       <a href="/map"><span class="title-bar-title">Gathering</span></a>
-    </div>
+    <div class="row">
+      <div class="columns small-12 small-centered">
+        <div class="title-bar">
+          <div class="title-bar-left">
+           <a href="/"><img class="warrior" src="https://s3.us-east-2.amazonaws.com/gathererbackground/arrowssmall.jpg" /></a>
+           <a href="/map"><span class="title-bar-title">Gathering</span></a>
+          </div>
 
-  <div class="title-bar-right">
+          <div class="title-bar-right">
+            <div class="top-bar-right">
+              <ul class="menu sign-up">
+                <% if user_signed_in? %>
 
-    <div class="top-bar-right">
-        <% if user_signed_in? %>
+                <li>
+                  <%= link_to "Signed In As #{current_user.username}",
+                    user_path(current_user)
+                  %>
+                </li>
 
-        <%end%>
+                <li>
+                  <%= link_to "Sign Out",
+                    destroy_user_session_path, method: :delete
+                  %>
+                </li>
 
-      <ul class="menu sign-up">
-        <% if user_signed_in? %>
-          <li>
+                <% if @unread != [] %>
+                  <li><a href='/conversations'><i class="fa fa-comments" id='unread' aria-hidden="true"></i></a></li>
+                <% else %>
+                  <li><a href='/conversations'><i class="fa fa-comments" aria-hidden="true"></i></a></li>
+                <% end %>
 
-            <%= link_to "Signed In As #{current_user.username}",
-              user_path(current_user)
-            %>
-          </li>
-
-          <li>
-            <%= link_to "Sign Out",
-              destroy_user_session_path, method: :delete
-            %>
-          </li>
-
-          <% if @unread != [] %>
-            <li><a href='/conversations'><i class="fa fa-comments" id='unread' aria-hidden="true"></i></a></li>
-          <% else %>
-            <li><a href='/conversations'><i class="fa fa-comments" aria-hidden="true"></i></a></li>
-         <% end %>
-
-        <% else %>
-          <li> <%= link_to "Sign In", new_user_session_path %> </li>
-          <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
+                <% else %>
+                  <li> <%= link_to "Sign In", new_user_session_path %> </li>
+                  <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
-
+    </div>
     <%= yield %>
-
   </body>
 </html>

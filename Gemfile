@@ -18,15 +18,19 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'httpclient'
 gem 'active_model_serializers'
+ruby '2.3.3'
 
 group :production do
   gem "puma"
   gem "rails_12factor"
 end
 
+group :development, :test do
+gem 'foreman'
+end
 
   gem 'dotenv'
-  gem 'dotenv-rails'  
+  gem 'dotenv-rails'
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'rspec-rails'

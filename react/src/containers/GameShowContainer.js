@@ -38,6 +38,7 @@ class GameShowContainer extends React.Component {
       user_id: this.state.currentUser.id,
       game_id: this.state.game.id
     };
+
     this.addNewComment(formPayLoad);
     this.handleFormClear(event);
     // post this comment to my database!
@@ -103,47 +104,43 @@ class GameShowContainer extends React.Component {
     })
 
       return (
-        <div>
-          <div className='row'>
-            <div className='columns small-12 medium-8'>
-              <GameShow
-                handleDelete = {this.handleDelete}
-                current_user={this.state.currentUser}
-                key = {this.state.game.id}
-                id=  {this.state.game.id}
-                title = {this.state.game.title}
-                gametype = {this.state.game.gametype}
-                time = {this.state.game.time}
-                date = {this.state.game.date}
-                address = {this.state.game.address}
-                city = {this.state.game.city}
-                zip = {this.state.game.zip}
-                number_of_players = {this.state.game.number_of_players}
-                handleSubmit = {this.handleCommentSubmit}
-                handlerFunction = {this.handleCommentChange}
-                handleFormClear = {this.handleFormClear}
-                comment_content = {this.state.comment}
-              />
-            </div>
+      <div>
+        <div className="hooha">
+          <div className='columns small-12 medium-12'>
 
-            <div className="columns small-12 medium-4">
-              <div id='LOOKHERE'>
-                <h4 className='text-center'> Comments </h4>
-                <hr />
-                {all_comments}
-              </div>
+          <div className="columns small-8 medium-8">
+            <div id='comment_tile'>
+              <h4 className='text-center'> Comments </h4>
+              <hr />
+              {all_comments}
             </div>
           </div>
 
+        <div className='form_and_buttons'>
           <div className='row'>
-            <div className="columns small-4">
-              <div id="button-group">
+            <GameShow
+              handleDelete = {this.handleDelete}
+              current_user={this.state.currentUser}
+              key = {this.state.game.id}
+              id=  {this.state.game.id}
+              handleSubmit = {this.handleCommentSubmit}
+              handlerFunction = {this.handleCommentChange}
+              handleFormClear = {this.handleFormClear}
+              comment_content = {this.state.comment}
+            />
+
+            <div className="row">
+              <div className="comment-button">
                 <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
                 <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
       )
     }
 

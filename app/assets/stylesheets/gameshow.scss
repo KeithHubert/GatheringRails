@@ -19,7 +19,7 @@
   }
 }
 
-.LOOKHERE {
+.comment_tile {
   border-radius: 2px;
   border-color: black;
   border: solid 2px;
@@ -33,7 +33,41 @@
   width: 100%;
 }
 
-#delete-button {
-    transform:translateY(250%);
+.comment-button{
+  width: 50%;
+  margin:auto;
+}
 
+.form_and_buttons {
+  margin:auto;
+}
+
+#edit_link {
+  font-size: 3vmin;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1{
+ font-family: 'Oswald', sans-serif;
+}
+
+p{
+  font-size: 2.5vmin;
+}
+
+.button {
+  width: 40%;
+  margin: 5px;
+}
+
+.request {
+  #field{
+    width: 150%;
+  }
+  #button{
+    font-size: 3vmin;
+    width: 150%;
+    margin: auto;
+  }
 }
