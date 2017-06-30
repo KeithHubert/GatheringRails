@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'confirmations' }
 
   root 'home#index'
-
+  resources :profiles, only: [:edit]
   resources :users
 
   resources :games do
