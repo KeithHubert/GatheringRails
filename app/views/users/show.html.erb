@@ -2,7 +2,47 @@
 
 <h3> <%= @user.email %> </h3>
 
+<!-- <div id='background' class='small-12 columns medium-8 columns float-left'>
+  <div class='small-12 columns'>
+    <div class='medium-9 columns'>
+      <h1><%= @user.username %>'s Profile Page:</h1>
+    </div>
+      <div class='medium-3 columns'>
+        <%= button_to 'Edit Profile', edit_user_registration_path(current_user), method: :get, id: 'button' %>
+      </div>
+  </div>
+
+  <h2>Your Games:</h2>
+    <% @user.signups.each do |signup| %>
+        <%= link_to signup.game.name, game_path(signup.game) %>
+          <% if signup.game.creator == @user.id %>
+            Creator
+          <% end %>
+      <br />
+    <% end %>
+    <hr />
+
+  <h2>Your Requests:</h2>
+    <% if @user.requests == [] %>
+      No requests made.
+    <% end %>
+    <% @user.requests.each do |request| %>
+      <p>
+        <div class='small-9 columns'><%= link_to request.game.name, game_path(request.game) %></div>
+        <%= button_to 'Cancel Request', game_request_path(request.game, request), method: :delete, id: 'special' %>
+      </p>
+    <% end %>
+    <hr />
+</div>
+
+<div class='medium-4 columns float-right'>
+  <div id='background' class='medium-11 columns float-right'>
+    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button' %>
+  </div>
+</div> -->
+
 
 
 
 <%= button_to 'Delete Account', current_user.destroy, method: :delete, data: { confirm: "Are you sure? This action cannot be undone." }, id: 'special' %>
+

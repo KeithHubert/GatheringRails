@@ -6,12 +6,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     if user_signed_in?
       @user = current_user
     else
       flash[:notice] = 'Please sign in first'
       redirect_to new_user_session_path
     end
+
   end
 
   def edit
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.email = params[:user][:email]
     @user.avatar_url = params[:user][:avatar_url]
+    @user.bio = params[:user][:bio]
 
     if @user.save
       flash[:notice] = 'Success! Your profile has been updated.'
@@ -29,6 +32,7 @@ class UsersController < ApplicationController
     else
       @user.email = params[:user][:email]
       @user.avatar_url = params[:user][:avatar_url]
+      @user.bio = params[:user][:bio]
       render :edit
     end
   end
