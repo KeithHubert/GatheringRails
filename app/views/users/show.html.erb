@@ -24,7 +24,6 @@
       No requests made.
     <% end %>
     <% @user.requests.each do |request| %>
-     <% binding.pry %>
       <p>
         <div class='small-9 columns'><%= link_to request.game.title, game_path(request.game) %></div>
         <%= button_to 'Cancel Request', game_request_path(request.game, request), method: :delete, id: 'special' %>
@@ -39,4 +38,4 @@
   </div>
 </div>
 
-<%= button_to "Cancel my account", registration_path(resource_name), class: "submit-button", data: { confirm: "Are you sure?" }, method: :delete %>
+<%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>

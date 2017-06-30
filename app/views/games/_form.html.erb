@@ -23,8 +23,8 @@
   </div>
 
   <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
+    <%= f.label :date, value: 'Please choose a date at a maximum of 2 weeks from today.'%>
+    <%= f.date_field :date, min: Date.today, max: Date.today + 2.week, :value => Time.now.strftime('%Y-%m-%d') %>
   </div>
 
   <div>
