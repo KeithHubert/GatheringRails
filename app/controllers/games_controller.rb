@@ -8,9 +8,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @request = Request.new
     @signup = Signup.new
-    else
-      flash[:notice] = 'Game not found. Sorry.'
-      redirect_to map_index_url
   end
 
   def new

@@ -39,7 +39,4 @@
   </div>
 </div>
 
-
-
-
-<!-- <%= button_to 'Delete Account', current_user.destroy, method: :delete, data: { confirm: "Are you sure? This action cannot be undone." }, id: 'special' %> -->
+<%= button_to "Cancel my account", registration_path(resource_name), class: "submit-button", data: { confirm: "Are you sure?" }, method: :delete %>

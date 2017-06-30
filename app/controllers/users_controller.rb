@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    binding.pry
     this_user = User.find(params[:id])
     this_user.destroy
     redirect_to root_path
