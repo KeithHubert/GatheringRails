@@ -24,9 +24,12 @@ group :production do
   gem "rails_12factor"
 end
 
+group :development, :test do
+gem 'foreman'
+end
 
   gem 'dotenv'
-  gem 'dotenv-rails'  
+  gem 'dotenv-rails'
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'rspec-rails'
