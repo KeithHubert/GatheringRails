@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if user_signed_in?
       @user = current_user
-    else
-      flash[:notice] = 'Please sign in first'
-      redirect_to new_user_session_path
+    # else
+    #   flash[:notice] = 'Please sign in first'
+    #   redirect_to new_user_session_path
     end
 
   end
@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    binding.pry
     this_user = User.find(params[:id])
     this_user.destroy
     redirect_to root_path
