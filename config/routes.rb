@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :new, :create, :show, :destroy]
       resources :users
       resources :comments, only: [:index, :new, :create]
+      resources :nearmegames
     end
   end
 
