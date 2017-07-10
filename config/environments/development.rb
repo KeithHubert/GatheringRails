@@ -67,10 +67,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
 
-  class ActionDispatch::Request
-    def remote_ip
-      "73.149.98.90"
-    end
-  end
+  # class ActionDispatch::Request
+  #   def remote_ip
+  #     "73.149.98.90"
+  #   end
+  # end
 
 end

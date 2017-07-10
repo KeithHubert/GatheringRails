@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :requests
   has_many :signups
   has_one :profile
-  has_one :location
 
   geocoded_by :current_sign_in_ip,
     :latitude => :lat, :longitude => :lng
