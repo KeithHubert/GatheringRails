@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :about
   resources :comments
   resources :map, only: [:index]
 
