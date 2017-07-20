@@ -11,11 +11,8 @@
         <div class='medium-6 columns medium-offset-4 columns'>
         <%= text_field_tag :search, params[:search], placeholder: "Search Games", class: "search-bar"%>
         <%= submit_tag "Search", :title => nil, class:'button save-form' %>
-      <div>
-        <%= link_to 'List a New Game', new_game_path, method: :get, class:'button' %>
-        <%= form_tag(games_path, :method => "get", id: "search-form") do %>
-        <% end %>
-      </div>
+        <%= link_to 'List a New Game', new_game_path, method: :get, class:"button save-form" %>
+        <%= form_tag(games_path, :method => "get", id: "search-form") %>
         </div>
       </div>
     </div>
