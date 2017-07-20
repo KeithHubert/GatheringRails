@@ -22,6 +22,15 @@ $text-shadow: 2px 2px 10px $black;
    background-size: cover;
    height: 100vh;
    width: 100vw;
+
+   .button{
+     width: auto;
+   }
+}
+
+.cluster {
+  margin: auto;
+  text-align: center;
 }
 
 #search{
@@ -39,17 +48,18 @@ $text-shadow: 2px 2px 10px $black;
 #gametile {
 
   font-family: 'Oswald', sans-serif;
-  background-image: url('mountain.jpg');
+  background-image: url('serra1.jpg');
   text-align: center;
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: 200%;
   // border: solid 2px;
   // border-color: $low-opacity-white;
   // border-radius: 6px;
   // box-shadow: 5px 5px 15px $form-box-grey-shadow;
   padding-top: 1em;
   padding-bottom: 20px;
+
 
   h6{
     font-weight: bolder;
@@ -58,7 +68,6 @@ $text-shadow: 2px 2px 10px $black;
   h4 {
     font-family: 'Oswald', sans-serif;
     color: black;
-    margin-top: 20px;
     position: static;
     z-index: 2;
     font-size: 5vmin;
@@ -81,6 +90,7 @@ $text-shadow: 2px 2px 10px $black;
   h3{
     font-size: 8vmin;
   }
+
 }
 
 #gametile_inner {
@@ -90,4 +100,13 @@ $text-shadow: 2px 2px 10px $black;
   width: 100%;
   font-family: 'Oswald', sans-serif;
   font-size: 3vmin;
+}
+
+#maptile{
+  #search{
+    text-align: center;
+    margin: auto;
+    width: 130%;
+  }
+
 }
