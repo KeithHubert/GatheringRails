@@ -94,11 +94,13 @@
       <% end %>
       <% current_user.games.each do |game| %>
         <p>
-          <%= link_to game.title, game_path(game.id) %>: Role -
+          <% if (game.date > Time.zone.now + 1.day) %>
+            <%= link_to game.title, game_path(game.id) %>: Role -
           <% if @game.creator == current_user.id %>
             Host
           <% else %>
             Player
+          <% end %>
           <% end %>
         </p>
       <% end %>

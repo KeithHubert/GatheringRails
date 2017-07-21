@@ -8,9 +8,11 @@
 
   <h2>Your Games:</h2>
     <% @user.signups.each do |signup| %>
+      <% if (signup.game.date > Time.zone.now + 1.day) %>
         <%= link_to signup.game.title, game_path(signup.game) %>
           <% if signup.game.creator == @user.id %>
             Creator
+          <% end %>
           <% end %>
       <br />
     <% end %>
