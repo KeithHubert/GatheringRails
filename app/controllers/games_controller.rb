@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.order(created_at: :desc)
+    @games = Game.search(params[:search])
     @user = current_user
   end
 

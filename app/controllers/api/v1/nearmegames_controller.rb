@@ -8,8 +8,6 @@ class Api::V1::NearmegamesController < ApplicationController
     # current_user_location_array = current_user.geocode
     # current_user_location = current_user_location_array.join(",")
 
-    binding.pry
-
     games = Game.all
     games_within_five_miles = []
     games.each do |game|
