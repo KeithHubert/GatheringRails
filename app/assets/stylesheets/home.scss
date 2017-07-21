@@ -133,6 +133,10 @@ $purple: #2A0631;
   padding-top: 5px;
   margin-top: 30px;
 
+  input {
+    max-width: 100px;
+  }
+
   a{
     color: white;
     font-size: 3vmin;

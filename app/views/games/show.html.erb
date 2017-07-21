@@ -15,26 +15,32 @@
   <p>Player Total: <%= @game.number_of_players %></p>
   <p>
     <h3>Total Players: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3>
+<div class="leave">
     <% @game.signups.each do |signup| %>
       <div class='small-12 columns'>
-        <div class='small-2 columns' style="font-size: 20px"><%=link_to signup.user.username, user_path(signup.user) %></div>
+        <div class='small-2 columns' style="font-size: 20px">
+
+          <%=link_to signup.user.username, user_path(signup.user) %></div>
           <% if current_user == signup.user %>
-            <div class='small-5 columns'><%= button_to 'Leave Game', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
+            <div class='small-5 columns'><%= button_to 'Leave Game', game_signup_path(@game, signup), data: {confirm: "Are you sure you want to leave this game?"},  method: :delete, id: 'button' %></div>
           <% elsif current_user.id == @game.creator %>
             <div class='small-5 columns'><%= button_to 'Remove Player', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
           <% end %>
-      </div>
+        </div>
     <% end %>
+  </div>
+  </br>
+  </br>
+</br>
+</br>
+<div class="request">
+    <%= form_for [@game, @request] do |f| %>
+    <%= f.text_field :body, placeholder: "Please tell us why you'd like to join", id: 'field' %>
+    <%= f.submit value:'Request to Join', id: 'button' %>
+    <% end %>
+  </div>
   </p>
   <% if current_user && (Signup.where(user: current_user, game: @game) == []) && (Request.where(user: current_user, game: @game) == []) %>
-    <div class='large-4 columns medium-5 columns small-6 columns float-right'>
-      <div class='request'>
-        <%= form_for [@game, @request] do |f| %>
-        <%= f.text_field :body, placeholder: "Please tell us why you'd like to join", id: 'field' %>
-        <%= f.submit value:'Request to Join', id: 'button' %>
-        <% end %>
-      </div>
-    </div>
   <% end %>
   <% if (Request.where(user: current_user, game: @game) != []) %>
     <div class='large-4 columns medium-2 columns small-6 columns float-right'>
@@ -88,11 +94,13 @@
       <% end %>
       <% current_user.games.each do |game| %>
         <p>
-          <%= link_to game.title, game_path(game.id) %>: Role -
+          <% if (game.date > Time.zone.now + 1.day) %>
+            <%= link_to game.title, game_path(game.id) %>: Role -
           <% if @game.creator == current_user.id %>
             Host
           <% else %>
             Player
+          <% end %>
           <% end %>
         </p>
       <% end %>

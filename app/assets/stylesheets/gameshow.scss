@@ -36,6 +36,11 @@
 .comment-button{
   width: 50%;
   margin:auto;
+  .button {
+    border: 10px;
+    border-color: white;
+    border-radius: 1em;
+  }
 }
 
 .form_and_buttons {
@@ -56,18 +61,31 @@ p{
   font-size: 2.5vmin;
 }
 
-.button {
-  width: 40%;
-  margin: 5px;
+.leave {
+  input {
+    width: 100%;
+  }
 }
 
-.request {
+.new_signup {
+  input {
+    margin: auto;
+    text-align: center;
+  }
+}
+
+#new_request{
+  margin: auto;
+  text-align: center;
+}
+
+.join {
   #field{
-    width: 150%;
+    width: 100%;
   }
   #button{
-    font-size: 3vmin;
-    width: 150%;
+    text-align: center;
+    width: 50%;
     margin: auto;
   }
 }

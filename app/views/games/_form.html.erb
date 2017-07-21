@@ -1,5 +1,7 @@
 <%= form_for @game do |f| %>
 
+<h1>Create New Game Listing</h1>
+
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -33,4 +35,6 @@
   </div>
 
   <%= f.submit id: 'special' %>
+
+  <%= button_to 'Cancel', map_index_path %>
 <% end %>

@@ -4,16 +4,15 @@
     <div class='medium-9 columns'>
       <h1><%= @user.username %>'s Profile Page:</h1>
     </div>
-      <div class='medium-3 columns'>
-        <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, id: 'button' %>
-      </div>
   </div>
 
   <h2>Your Games:</h2>
     <% @user.signups.each do |signup| %>
+      <% if (signup.game.date > Time.zone.now + 1.day) %>
         <%= link_to signup.game.title, game_path(signup.game) %>
           <% if signup.game.creator == @user.id %>
             Creator
+          <% end %>
           <% end %>
       <br />
     <% end %>
@@ -40,11 +39,14 @@
 
 <div>
   <h1> About Me </h1>
-  <% if @user.bio.empty?%>
+  <% if @user.bio.nil?%>
    This user does not have a bio yet.
   <% else %>
   <%= @user.bio %>
   <% end %>
+  <div class='medium-3 columns'>
+    <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, id: 'button' %>
+  </div>
 </div>
 
 <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete %>
