@@ -10,8 +10,10 @@
       <div id='buttons' class='column small 12'>
         <div class='medium-6 columns medium-offset-4 columns'>
           <div class="cluster">
-            <%= text_field_tag :search, params[:search], placeholder: "Search Games", class: "search-bar"%>
-            <%= submit_tag "Search", :title => nil, class:"button save-form" %>
+            <%= form_tag(games_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Games", class: "search-bar"%>
+              <%= submit_tag "Search", :name => nil, class:"button save-form" %>
+              <% end %>
             <%= button_to 'List a New Game', new_game_path, method: :get, class:"button save-form" %>
             <%= form_tag(games_path, :method => "get") %>
           </div>

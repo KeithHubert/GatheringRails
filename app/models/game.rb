@@ -27,8 +27,11 @@ class Game < ApplicationRecord
 # end
 
 def self.search(search)
-  where("title ILIKE ?
-  OR gametype ILIKE ? OR address ILIKE ? OR time ILIKE ? OR date ILIKE ? OR number_of_players ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
-end
+  if search
+      where("title ILIKE ? OR gametype ILIKE ? OR address ILIKE ? OR time ILIKE ? OR date ILIKE ? OR number_of_players ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").order('date ASC')
+    else
+      order('date ASC')
+    end
+  end
 
 end

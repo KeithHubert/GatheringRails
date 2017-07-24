@@ -1,14 +1,17 @@
 <div id='background' class='large-offset-1 columns medium-offset-1 columns small-offset-1 columns large-10 columns medium-10 columns small-10 columns'>
-  <div class='text-center'><h2>All Games, listed by most recently created</h2></div>
   <% @games.each do |game| %>
     <p>
-      <u><%= link_to game.title, game_path(game) %></u>:
-      <br />What: <%= game.gametype %>
-      <br />Where: <%= game.address %> // When: <%= game.date %>, <%= game.time %>
-      // Players: <%= game.number_of_players %>
+      <% if (game.date > Time.zone.now + 1.day) %>
+        <u><%= link_to game.title, game_path(game) %></u>:
+        <br />What: <%= game.gametype %>
+        <br />Where: <%= game.address %> // When: <%= game.date %>, <%= game.time %>
+        // Players: <%= game.number_of_players %>
+        <% else %>
+         <h4> Sorry, no games can be found with that search </h4>
+        <% end %>
+      <% end %>
       <hr />
     </p>
-  <% end %>
 </div>
 
 <div id="app"></div>
