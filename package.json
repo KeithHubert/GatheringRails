@@ -1,16 +1,18 @@
+
+
 {
   "name": "The Gathering App",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-  "node": "7.9.0"
-},
   "main": "webpack.config.js",
   "scripts": {
     "heroku-postbuild": "NODE_ENV=production npm run webpack -- -p",
     "test": "node_modules/.bin/karma start karma.conf.js",
     "start": "yarn run webpack -- --watch",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
+  },
+  "engines": {
+    "node": "7.9.0"
   },
   "author": "",
   "license": "ISC",
