@@ -3,7 +3,7 @@ var config = {
     path: './react/src/main.js',
   },
   output: {
-    path: './app/assets/javascripts',
+    path: '/../app/assets/javascripts',
     filename: 'bundle.js'
   },
   module: {
@@ -11,7 +11,7 @@ var config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader'
       }
     ]
   },
