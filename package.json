@@ -2,6 +2,9 @@
 
 {
   "name": "The Gathering App",
+  "engines": {
+  "node": "7.9.0"
+  }
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -10,9 +13,6 @@
     "test": "node_modules/.bin/karma start karma.conf.js",
     "start": "yarn run webpack -- --watch",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
-  },
-  "engines": {
-    "node": "7.9.0"
   },
   "author": "",
   "license": "ISC",
