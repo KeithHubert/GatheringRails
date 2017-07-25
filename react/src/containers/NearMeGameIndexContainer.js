@@ -41,6 +41,8 @@ class NearMeGameIndexContainer extends Component {
     })
 
     return(
+      <div>
+      </div>
       // <div>
       // <br/>
       //   <div className='row align-middle'>
