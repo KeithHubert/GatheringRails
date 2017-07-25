@@ -1,9 +1,9 @@
 var config = {
   entry: {
-    path: './react/src/main.js',
+        path: __dirname + '/src/main.js',
   },
   output: {
-    path: '/../app/assets/javascripts',
+        path: __dirname + '/../app/assets/javascripts',
     filename: 'bundle.js'
   },
   module: {
