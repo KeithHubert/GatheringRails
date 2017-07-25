@@ -11,9 +11,9 @@
 // about supported directives.
 //
 
+//= require gmaps/google
 //= require jquery
 //= require jquery_ujs
-//= require gmaps/google
 //= require foundation
 //= require_tree .
 
