@@ -1,4 +1,5 @@
 <div id='background' class='large-offset-1 columns medium-offset-1 columns small-offset-1 columns large-10 columns medium-10 columns small-10 columns'>
+<h1> Your Search Results</h1>
   <% @games.each do |game| %>
     <p>
       <% if (game.date > Time.zone.now + 1.day) %>
@@ -6,8 +7,6 @@
         <br />What: <%= game.gametype %>
         <br />Where: <%= game.address %> // When: <%= game.date %>, <%= game.time %>
         // Players: <%= game.number_of_players %>
-        <% else %>
-         <h4> Sorry, no games can be found with that search </h4>
         <% end %>
       <% end %>
       <hr />
@@ -17,7 +16,7 @@
 <div id="app"></div>
 
 <div class='small-12 columns medium-12 columns large-12 columns' id='newgame'>
-  <div class='large-4 medium-6 small-8 large-offset-4 medium-offset-3 small-offset-2 columns'>
+  <div class='large-4 medium-6 small-8'>
     <%= button_to 'Add a Game Listing', new_game_path, method: :get, id: 'button'  %>
   </div>
 </div>

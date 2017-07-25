@@ -30,6 +30,7 @@
         <%= "#{g.gametype}" %>
       </br>
         <%= "#{g.address}" %>
+      </br>
         <% end %>
     </div>
   </div>
@@ -50,6 +51,7 @@
     navigator.geolocation.getCurrentPosition(displayOnMap);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
+    handler.getMap().setZoom(8);
   });
   function displayOnMap(position){
   var marker = handler.addMarker({
@@ -57,13 +59,7 @@
     lng: position.coords.longitude,
     infowindow: 'Your position'
   });
+  handler.getMap().setZoom(8);
   handler.map.centerOn(marker);
 }
 </script>
-
-<!-- <div class='row'>
-  <div id='buttons' class='columns small-4 text-center '>
-    <%= button_to 'Search Games', games_path, method: :get, id: 'button' %>
-    <%= button_to 'List a New Game', new_game_path, method: :get, id: 'button' %>
-  </div>
-</div> -->
