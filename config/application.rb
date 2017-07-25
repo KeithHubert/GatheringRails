@@ -17,8 +17,6 @@ require "devise"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-config.assets.paths << Rails.root.join("react")
-
 module Gatherernew
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
