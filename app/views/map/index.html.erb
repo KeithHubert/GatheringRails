@@ -24,7 +24,7 @@
   <div id="gametile" class='small-4 columns'>
   <h4>Recently Added Games</h4>
     <div id ="gametile_inner">
-      <% Game.order(id: :desc).limit(5).each do |g| %>
+      <% Game.order(id: :desc).limit(4).each do |g| %>
         <%= link_to g.title, game_path(g) %>
       </br>
         <%= "#{g.gametype}" %>

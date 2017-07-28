@@ -2,6 +2,8 @@
    <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
+
+<h2> Messages </h2>
 <div class="messages">
   <% @messages.each do |message| %>
     <% if message.body %>
@@ -21,14 +23,14 @@
   <% end %>
 </div>
 
-
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div class="reply_button">
-    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-  </div>
-
+<div class="reply_form">
+  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div class="reply_button">
+      <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+    </div>
+</div>
 <% end %>
