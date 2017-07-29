@@ -110,13 +110,14 @@ $purple: #2A0631;
   color: white;
 
    }
+
     p {
       font-family: sans-serif;
       line-height:1.7;
-      color:white;
+      color:#4A4A4A;
       margin:5px;
       text-align: center;
-      font-weight: 300;
+      font-weight: bold;
     }
 
 
@@ -142,6 +143,15 @@ $purple: #2A0631;
     font-size: 3vmin;
     font-weight: bold;
     }
+
+    p {
+      font-family: sans-serif;
+      line-height:1.7;
+      color:white;
+      margin:5px;
+      text-align: center;
+      font-weight: 300;
+    }
   }
 
   .summary {
@@ -151,4 +161,5 @@ $purple: #2A0631;
     font-size: 2.8vmin;
     font-weight: 300;
     }
+
   }

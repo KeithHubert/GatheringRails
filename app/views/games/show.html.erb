@@ -21,7 +21,7 @@
         <div class='small-2 columns' style="font-size: 20px">
 
           <%=link_to signup.user.username, user_path(signup.user) %></div>
-          <% if current_user == signup.user %>
+          <% if current_user == signup.user && current_user != @game.creator %>
             <div class='small-5 columns'><%= button_to 'Leave Game', game_signup_path(@game, signup), data: {confirm: "Are you sure you want to leave this game?"},  method: :delete, id: 'button' %></div>
           <% elsif current_user.id == @game.creator %>
             <div class='small-5 columns'><%= button_to 'Remove Player', game_signup_path(@game, signup), method: :delete, id: 'button' %></div>
