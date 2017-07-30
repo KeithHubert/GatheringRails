@@ -69,18 +69,22 @@
 </div> -->
 
 <div class='row'>
-  <div class='columns small-12 medium-6'>
-    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button' %>
+  <div class='columns small-12 medium-6 text-center'>
+    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button', class: 'btn' %>
   </div>
   <div class='columns small-12 medium-6'>
     <h1 class='text-center'>About Me</h1>
+    <div class='bumper-25'></div>
     <% if @user.bio.nil?%>
-      This user does not have a bio yet.
+      <p class='text-center'>This user does not have a bio yet</p>
     <% else %>
-      <%= @user.bio %>
+      <p class='text-center'><%= @user.bio %></p>
     <% end %>
     <% if current_user.id == @user.id %>
-      <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, id: 'button' %>
+      <div class='text-center'>
+        <div class='bumper-25'></div>
+        <%= link_to 'Edit Profile', edit_user_path(@user), method: :get, class: 'btn' %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -109,6 +113,6 @@
 
 <div class='row'>
   <div class='columns small-12 text-center'>
-    <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete %>
+    <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete, class: 'btn' %>
   </div>
 </div>
