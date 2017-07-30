@@ -54,6 +54,11 @@
   background: white;
 }
 
+.title-bar-left {
+  line-height: 100px;
+  vertical-align: middle;
+}
+
 .title-bar-title {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: bold;
@@ -61,6 +66,22 @@
   color: black;
 }
 
+.menu {
+  float: right;
+}
+
+.menu > li > a {
+  display: block;
+  padding: 0.7rem 1rem;
+  line-height: 75px;
+  color: #464646;
+  font-size: 2em;
+  font-weight: bold;
+}
 .bumper-50 {
   height: 50px;
+}
+
+.nav {
+  max-width: 100%;
 }
