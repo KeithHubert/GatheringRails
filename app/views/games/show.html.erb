@@ -1,21 +1,136 @@
-<div id='background' class='small-12 columns medium-8 columns large-8 columns'>
+<div class='bumper-25'></div>
+  <div class='row'>
+    <div class='columns small-12 text-center'>
+      <h1><%= @game.title %></h1>
+      <br width='50%' />
+    </div>
+  </div>
+<div class='bumper-25'></div>
+
+<div class='row'>
+  <!-- MAP -->
+  <div class='columns small-12 medium-6 text-center'>
+    <div id="map" style='width: 100%; height: 400px;'></div>
+    <br />
+    <div>
+      <%= form_for [@game, @request] do |f| %>
+        <%= f.text_field :body, placeholder: "Please tell us why you'd like to join", id: 'field' %>
+        <%= f.submit value:'Request to Join', class: 'button' %>
+      <% end %>
+    </div>
+    <% if (Request.where(user: current_user, game: @game) != []) %>
+      <div class='large-4 columns medium-2 columns small-6 columns float-right'>
+        <% @request = Request.where(user: current_user, game: @game).first %>
+        <%= button_to 'Delete Request', game_request_path(@game, @request), method: :delete, data: { confirm: "Are you sure?" }, class: 'button' %>
+      </div>
+    <% end %>
+  </div>
+  <!-- GAME INFO -->
+  <div class='columns small-12 medium-6 text-center'>
+    <h3>Game Info</h3>
+    <p>Type: <%= @game.gametype %></p>
+    <p>Time: <%= DateTime.parse(@game.time).strftime("%l:%M%p") %></p>
+    <p>Date: <%= @game.date %></p>
+    <p>Location: <%= @game.address %></p>
+    <p>Max Total Players: <%= @game.number_of_players %></p>
+    <!-- LOGIC TO GET REMAINING SPOTS AVAILABLE FOR THIS GAME -->
+    <% @spots_left = @game.number_of_players.to_i - @game.signups.size %>
+    <p>Spots Left: <%= @spots_left %></p>
+    <p>Creator: <%= link_to User.find(@game.creator).username, user_path(@game.creator) %></p>
+    <% @game.signups.each do |signup| %>
+      <% if current_user == signup.user && current_user != @game.creator %>
+        <%= button_to 'Leave Game', game_signup_path(@game, signup), data: {confirm: "Are you sure you want to leave this game?"},  method: :delete, class: 'button text-center' %>
+      <% elsif current_user.id == @game.creator %>
+        <%= button_to 'Remove Player', game_signup_path(@game, signup), method: :delete, class: 'button text-center' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<hr width='50%'/>
+
+<% if current_user.id == @game.creator %>
+  <div class='row'>
+    <div class='columns small-12 medium-6 text-center'>
+      <h1>Game Requests</h1>
+      <% if @game.requests.size < 1 %>
+        <p class='text-center'> No new requests </p>
+      <% else %>
+        <% @game.requests.each do |request| %>
+          <p><span class='search-result-bold'><%= request.user.username %></span>: <%= request.body %></p>
+          <%= form_for [@game, @signup] do |f| %>
+            <%= f.hidden_field :user_id, value: request.user.id %>
+            <%= f.submit(value="Add Player", class: 'button') %>
+          <% end %>
+          <%= button_to 'Deny', game_request_path(@game, request), method: :delete, class: 'button' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class='columns small-12 medium-6 text-center'>
+      <% if current_user.id == @game.creator %>
+        <h1>Add Player to Game Manually:</h1>
+        <%= form_for [@game, @signup] do |f| %>
+          <%= f.label :user, value: 'Username of Player:' %>
+          <%= f.text_field :user %>
+          <br />
+          <%= f.submit(value='Add Player', class: 'button') %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class='row'>
+    <% if @current_user.games.size > 0 %>
+    <hr width='50%'/>
+    <div class='columns small-12'>
+      <h3 class='text-center'>Your Games</h3>
+      <% current_user.games.each do |game| %>
+        <% if (game.date > Time.zone.now + 1.day) %>
+          <p><span class='search-result-bold'><%= link_to game.title, game_path(game.id) %></span></p>
+          <% if @game.creator == current_user.id %>
+            <p><span class='search-result-bold'>Role:</span> Host</p>
+          <% else %>
+            <p><span class='search-result-bold'>Role:</span>Player</p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <% else %>
+      <div class='columns small-12 text-center'>
+        <p>You have no games!</p>
+      </div>
+    <% end %>
+  </div>
+  <div class='row'>
+    <div class='columns small-12 text-center'>
+      <% if (current_user.id == @game.creator) %>
+        <%= link_to 'Edit Current Game', edit_game_path(@game), id: 'button', class: 'text-center' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+<!-- <div id='background' class='small-12 columns medium-8 columns large-8 columns'>
   <div class='large-12 columns medium-12 columns small-12 columns'>
 
     <h1>
       <%= @game.title %>
     </h1>
-  </div>
+  </div> -->
 
-  <div id="map" class='' style='width: 100%; height: 400px; '></div>
+  <!-- <div id="map" class='' style='width: 100%; height: 400px; '></div>
 
   <p>We are playing <%= @game.gametype %>:
     <%= @game.date %> at <%= DateTime.parse(@game.time).strftime("%l:%M%p") %> at <%= @game.address %></p>
   <p>Description: <%= @game.title %></p>
-  <p>Game run by: <%= link_to User.find(@game.creator).username, user_path(@game.creator)  %></p>
-  <p>Player Total: <%= @game.number_of_players %></p>
-  <p>
-    <h3>Total Players: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3>
-<div class="leave">
+  <p>Game run by: <%= link_to User.find(@game.creator).username, user_path(@game.creator)  %></p> -->
+  <!-- <p>Player Total: <%= @game.number_of_players %></p> -->
+
+    <!-- <h3>Total Players: (<%= @game.signups.size %>/<%= @game.number_of_players %>)</h3> -->
+<!-- <div class="leave">
     <% @game.signups.each do |signup| %>
       <div class='small-12 columns'>
         <div class='small-2 columns' style="font-size: 20px">
@@ -28,12 +143,9 @@
           <% end %>
         </div>
     <% end %>
-  </div>
-  </br>
-  </br>
-</br>
-</br>
-<div class="request">
+  </div> -->
+
+<!-- <div class="request">
     <%= form_for [@game, @request] do |f| %>
     <%= f.text_field :body, placeholder: "Please tell us why you'd like to join", id: 'field' %>
     <%= f.submit value:'Request to Join', id: 'button' %>
@@ -48,13 +160,9 @@
       <%= button_to 'Delete Request', game_request_path(@game, @request), method: :delete, data: { confirm: "Are you sure?" }, id: 'button' %>
     </div>
   <% end %>
-</br>
-</br>
-</br>
-</br>
-</div>
+</div> -->
 
-<div class='small-12 columns medium-4 columns large-4 columns float-right'>
+<!-- <div class='small-12 columns medium-4 columns large-4 columns float-right'>
   <div id='background' class='small-12 columns medium-11 columns float-right'>
 
     <% if current_user.id == @game.creator %>
@@ -114,7 +222,7 @@
       <% end %>
       <hr />
   </div>
-</div>
+</div> -->
 
   <div id="app"></div>
 
