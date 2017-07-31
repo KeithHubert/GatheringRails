@@ -38,7 +38,8 @@
     <p>Spots Left: <%= @spots_left %></p>
     <p>Creator: <%= link_to User.find(@game.creator).username, user_path(@game.creator) %></p>
     <% @game.signups.each do |signup| %>
-      <% if current_user == signup.user && current_user != @game.creator %>
+      <%= link_to signup.user.username, user_path(signup.user) %>
+      <% if current_user == signup.user && current_user.id != @game.creator %>
         <%= button_to 'Leave Game', game_signup_path(@game, signup), data: {confirm: "Are you sure you want to leave this game?"},  method: :delete, class: 'button text-center' %>
       <% elsif current_user.id == @game.creator %>
         <%= button_to 'Remove Player', game_signup_path(@game, signup), method: :delete, class: 'button text-center' %>
