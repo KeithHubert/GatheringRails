@@ -43,26 +43,7 @@ $text-shadow: 2px 2px 10px $black;
   margin-top: 2em;
 }
 
-#gametile {
-
-  font-family: 'Oswald', sans-serif;
-  background-image: url('serra1.jpg');
-  text-align: center;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: 200%;
-  // border: solid 2px;
-  // border-color: $low-opacity-white;
-  // border-radius: 6px;
-  // box-shadow: 5px 5px 15px $form-box-grey-shadow;
-  padding-top: 1em;
-  padding-bottom: 20px;
-
-
-  h6{
-    font-weight: bolder;
-    font-size: 4vmin;
-  }
+.recent-games--box {
   h4 {
     font-family: 'Oswald', sans-serif;
     color: black;
@@ -75,20 +56,6 @@ $text-shadow: 2px 2px 10px $black;
     // text-shadow:4px 4px 0 rgba(0,0,0,0.4);
     padding-bottom: 10px;
   }
-  a {
-    font-family: 'Oswald', sans-serif;
-    font-size: 4vmin;
-  }
-  p{
-    font-family: 'Open Sans', sans-serif;
-    color: rgb(43, 43, 43);
-    font-size: 4vmin;
-    margin-top: 0px;
-  }
-  h3{
-    font-size: 8vmin;
-  }
-
 }
 
 #gametile_inner {
