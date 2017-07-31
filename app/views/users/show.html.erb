@@ -1,50 +1,118 @@
+<div class='row'>
+  <div class='columns small-12 small-centered text-center'>
+    <h1><%= @user.username %>'s Profile Page:</h1>
+  </div>
+</div>
 
-<div id='background' class='small-12 columns medium-8 columns float-left'>
+<!-- <div id='background' class='small-12 columns medium-8 columns float-left'>
   <div class='small-12 columns'>
     <div class='medium-9 columns'>
       <h1><%= @user.username %>'s Profile Page:</h1>
     </div>
-      <div class='medium-3 columns'>
-        <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, id: 'button' %>
-      </div>
-  </div>
+  </div> -->
 
-  <h2>Your Games:</h2>
+<div class='row'>
+  <div class='columns small-12'>
+    <h2>Your Games:</h2>
     <% @user.signups.each do |signup| %>
+      <% if (signup.game.date > Time.zone.now + 1.day) %>
         <%= link_to signup.game.title, game_path(signup.game) %>
           <% if signup.game.creator == @user.id %>
             Creator
           <% end %>
+      <% end %>
       <br />
     <% end %>
-    <hr />
+  </div>
+</div>
 
-  <h2>Your Requests:</h2>
-    <% if @user.requests.empty?%>
-      No requests made.
-    <% end %>
+<!-- <h2>Your Games:</h2>
+  <% @user.signups.each do |signup| %>
+    <% if (signup.game.date > Time.zone.now + 1.day) %>
+      <%= link_to signup.game.title, game_path(signup.game) %>
+        <% if signup.game.creator == @user.id %>
+          Creator
+        <% end %>
+        <% end %>
+    <br />
+  <% end %>
+  <hr /> -->
+
+<div class='row'>
+  <div class='columns small-12'>
+    <h2>Your Requests:</h2>
+    <% if @user.requests.empty? %>
+      No requests made
+    <% else %>
     <% @user.requests.each do |request| %>
       <p>
         <div class='small-9 columns'><%= link_to request.game.title, game_path(request.game) %></div>
         <%= button_to 'Cancel Request', game_request_path(request.game, request), method: :delete, id: 'special' %>
       </p>
+      <% end %>
     <% end %>
     <hr />
-</div>
-
-<div class='medium-4 columns float-right'>
-  <div id='background' class='medium-11 columns float-right'>
-    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button' %>
   </div>
 </div>
 
-<div>
+<!-- <h2>Your Requests:</h2>
+  <% if @user.requests.empty?%>
+    No requests made.
+  <% end %>
+  <% @user.requests.each do |request| %>
+    <p>
+      <div class='small-9 columns'><%= link_to request.game.title, game_path(request.game) %></div>
+      <%= button_to 'Cancel Request', game_request_path(request.game, request), method: :delete, id: 'special' %>
+    </p>
+  <% end %>
+  <hr />
+</div> -->
+
+<div class='row'>
+  <div class='columns small-12 medium-6 text-center'>
+    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button', class: 'btn' %>
+  </div>
+  <div class='columns small-12 medium-6'>
+    <h1 class='text-center'>About Me</h1>
+    <div class='bumper-25'></div>
+    <% if @user.bio.nil?%>
+      <p class='text-center'>This user does not have a bio yet</p>
+    <% else %>
+      <p class='text-center'><%= @user.bio %></p>
+    <% end %>
+    <% if current_user.id == @user.id %>
+      <div class='text-center'>
+        <div class='bumper-25'></div>
+        <%= link_to 'Edit Profile', edit_user_path(@user), method: :get, class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <div class='medium-4 columns float-right'>
+  <div id='background' class='medium-11 columns float-right'>
+    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button' %>
+  </div>
+</div> -->
+
+
+<!-- <div>
   <h1> About Me </h1>
-  <% if @user.bio.empty?%>
+  <% if @user.bio.nil?%>
    This user does not have a bio yet.
   <% else %>
   <%= @user.bio %>
   <% end %>
-</div>
+  <div class='medium-3 columns'>
+    <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, id: 'button' %>
+  </div>
+</div> -->
 
-<%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete %>
+<div class='bumper-50'></div>
+<div class='bumper-50'></div>
+
+<div class='row'>
+  <div class='columns small-12 text-center'>
+    <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete, class: 'btn' %>
+  </div>
+</div>

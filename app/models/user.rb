@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :requests
   has_many :signups
   has_one :profile
-  has_one :location
 
   geocoded_by :current_sign_in_ip,
     :latitude => :lat, :longitude => :lng
@@ -15,7 +14,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
     role == "admin"

@@ -1,20 +1,43 @@
-<div id='background' class='large-offset-1 columns medium-offset-1 columns small-offset-1 columns large-10 columns medium-10 columns small-10 columns'>
-  <div class='text-center'><h2>All Games, listed by most recently created</h2></div>
+<div class='row'>
+  <div class='columns small-12 text-center'>
+    <h1> Your Search Results</h1>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='columns small-12'>
+    <% @games.each do |game| %>
+      <% if (game.date > Time.zone.now + 1.day) %>
+        <h3> <%= link_to game.title, game_path(game) %> </h3>
+        <h5> <span class='search-result-bold'>What:</span> <%= game.gametype %> </h5>
+        <h5> <span class='search-result-bold'>Where:</span> <%= game.address %> </h5>
+        <h5> <span class='search-result-bold'>When:</span> <%= game.date %>, <%= game.time %> </h5>
+        <h5> <span class='search-result-bold'>Players:</span> <%= game.number_of_players %> </h5>
+      <% end %>
+    <% end %>
+    <hr />
+  </div>
+</div>
+
+<!-- <div id='background' class='large-offset-1 columns medium-offset-1 columns small-offset-1 columns large-10 columns medium-10 columns small-10 columns'>
+<h1> Your Search Results</h1>
   <% @games.each do |game| %>
     <p>
-      <u><%= link_to game.title, game_path(game) %></u>:
-      <br />What: <%= game.gametype %>
-      <br />Where: <%= game.address %> // When: <%= game.date %>, <%= game.time %>
-      // Players: <%= game.number_of_players %>
+      <% if (game.date > Time.zone.now + 1.day) %>
+        <u><%= link_to game.title, game_path(game) %></u>:
+        <br />What: <%= game.gametype %>
+        <br />Where: <%= game.address %> // When: <%= game.date %>, <%= game.time %>
+        // Players: <%= game.number_of_players %>
+        <% end %>
+      <% end %>
       <hr />
     </p>
-  <% end %>
 </div>
 
 <div id="app"></div>
 
 <div class='small-12 columns medium-12 columns large-12 columns' id='newgame'>
-  <div class='large-4 medium-6 small-8 large-offset-4 medium-offset-3 small-offset-2 columns'>
+  <div class='large-4 medium-6 small-8'>
     <%= button_to 'Add a Game Listing', new_game_path, method: :get, id: 'button'  %>
   </div>
-</div>
+</div> -->

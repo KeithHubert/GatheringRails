@@ -42,18 +42,20 @@ class NearMeGameIndexContainer extends Component {
 
     return(
       <div>
-      <br/>
-        <div className='row align-middle'>
-          <div className='small-10 medium-5 small-centered columns'>
-            <h1>Games Available Near You</h1>
-          </div>
-          <div className='small-10 medium-4 small-centered columns'>
-            <a href={this.props.params.user_id}>
-            </a>
-          </div>
-        </div>
-        { nearMeGames }
       </div>
+      // <div>
+      // <br/>
+      //   <div className='row align-middle'>
+      //     <div className='small-10 medium-5 small-centered columns'>
+      //       <h1>Games Available Near You</h1>
+      //     </div>
+      //     <div className='small-10 medium-4 small-centered columns'>
+      //       <a href={this.props.params.user_id}>
+      //       </a>
+      //     </div>
+      //   </div>
+      //   { nearMeGames }
+      // </div>
     )
   }
 }

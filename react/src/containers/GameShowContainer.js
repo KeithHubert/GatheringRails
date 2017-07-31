@@ -92,6 +92,7 @@ class GameShowContainer extends React.Component {
   }
 
   render() {
+
     let all_comments = this.state.comments.map((comment) => {
       return(
         <CommentTile
@@ -103,47 +104,37 @@ class GameShowContainer extends React.Component {
       )
     })
 
-      return (
+    return (
       <div>
-        <div className="hooha">
-          <div className='columns small-12 medium-12'>
-
-          <div className="columns small-8 medium-8">
-            <div id='comment_tile'>
-              <h4 className='text-center'> Comments </h4>
-              <hr />
-              {all_comments}
-            </div>
+        <div className='row'>
+          <div className='columns small-12 text-center'>
+            <h2 className='text-center'> Comments </h2>
+            {all_comments}
           </div>
+        </div>
 
-        <div className='form_and_buttons'>
-          <div className='row'>
-            <GameShow
-              handleDelete = {this.handleDelete}
-              current_user={this.state.currentUser}
-              key = {this.state.game.id}
-              id=  {this.state.game.id}
-              handleSubmit = {this.handleCommentSubmit}
-              handlerFunction = {this.handleCommentChange}
-              handleFormClear = {this.handleFormClear}
-              comment_content = {this.state.comment}
-            />
+        <div className='row'>
+          <GameShow
+            handleDelete = {this.handleDelete}
+            current_user={this.state.currentUser}
+            key = {this.state.game.id}
+            id=  {this.state.game.id}
+            handleSubmit = {this.handleCommentSubmit}
+            handlerFunction = {this.handleCommentChange}
+            handleFormClear = {this.handleFormClear}
+            comment_content = {this.state.comment}
+          />
+        </div>
 
-            <div className="row">
-              <div className="comment-button">
-                <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
-                <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
-              </div>
-            </div>
+        <div className="row">
+          <div className="column small-12 small-centered text-center">
+            <input className="button" type="submit" value="Clear" onClick={this.handleFormClear}/>
+            <input className="button" type="submit" value="Submit" onClick={this.handleCommentSubmit}/>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
       )
     }
-
-}
+  }
 
 export default GameShowContainer;

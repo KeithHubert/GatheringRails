@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Home from '../components/Home'
+import React from 'react';
+import Home from '../components/Home';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -28,13 +28,9 @@ class HomeContainer extends React.Component {
   render() {
       return (
         <div>
-          <div className='row'>
-            <div className='columns small-12'>
-              <Home
-                current_user={this.state.current_user}
-              />
-            </div>
-          </div>
+          <Home
+            current_user={this.state.current_user}
+          />
         </div>
       )
     }
