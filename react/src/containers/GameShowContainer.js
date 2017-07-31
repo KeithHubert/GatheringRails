@@ -108,7 +108,7 @@ class GameShowContainer extends React.Component {
       <div>
         <div className='row'>
           <div className='columns small-12 text-center'>
-            <h2 className='text-center'> Comments </h2>
+            <h1 className='text-center'> Comments </h1>
             {all_comments}
           </div>
         </div>
