@@ -15,44 +15,40 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div class="row">
+    <div class="row nav">
       <div class="columns small-12 small-centered">
         <div class="title-bar">
+
+          <!-- Left-Hand side of Nav (Logo) -->
           <div class="title-bar-left">
            <a href="/"><img class="warrior" src="https://s3.us-east-2.amazonaws.com/gathererbackground/arrowssmall.jpg" /></a>
            <a href="/map"><span class="title-bar-title">Gathering</span></a>
           </div>
 
-          <div class="title-bar-right">
-            <div class="top-bar-right">
-              <ul class="menu sign-up">
-                <% if user_signed_in? %>
+          <!-- Right-Hand side of Nav (Links) -->
+          <ul class="menu sign-up">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Signed In As #{current_user.username}",
+                  user_path(current_user)
+                %>
+              </li>
+              <li>
+                <%= link_to "Sign Out",
+                  destroy_user_session_path, method: :delete
+                %>
+              </li>
+              <% if @unread != [] %>
+                <li><a href='/conversations'><i class="fa fa-comments" id='unread' aria-hidden="true"></i></a></li>
+              <% else %>
+                <li><a href='/conversations'><i class="fa fa-comments" aria-hidden="true"></i></a></li>
+              <% end %>
 
-                <li>
-                  <%= link_to "Signed In As #{current_user.username}",
-                    user_path(current_user)
-                  %>
-                </li>
-
-                <li>
-                  <%= link_to "Sign Out",
-                    destroy_user_session_path, method: :delete
-                  %>
-                </li>
-
-                <% if @unread != [] %>
-                  <li><a href='/conversations'><i class="fa fa-comments" id='unread' aria-hidden="true"></i></a></li>
-                <% else %>
-                  <li><a href='/conversations'><i class="fa fa-comments" aria-hidden="true"></i></a></li>
-                <% end %>
-
-                <% else %>
-                  <li> <%= link_to "Sign In", new_user_session_path %> </li>
-                  <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
+            <% else %>
+              <li> <%= link_to "Sign In", new_user_session_path %> </li>
+              <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>

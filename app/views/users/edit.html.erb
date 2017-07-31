@@ -1,18 +1,33 @@
-<h1> Edit Your Profile </h1>
+<div class='bumper-25'></div>
+  <h2 class='text-center'>Edit Your Profile</h2>
+<div class='bumper-25'></div>
 
-<%= form_for @user do |f| %>
+<section>
+  <%= form_for(@user, html: {class: 'form--signup__box'}) do |f| %>
 
-  <%= f.label :email, "Email" %>
-  <%= f.email_field :email, autofocus: true, :input_html => { :value => @user.email } %>
+  <div class="form--signup__field">
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, autofocus: true, :input_html => { :value => @user.email } %>
+  </div>
 
-  <%= f.label :bio, "What do you want others to know about you? Add a bio here." %>
-  <%= f.text_field :bio %>
+  <div class="form--signup__field">
+    <%= f.label :bio, "What do you want others to know about you? Add a bio here." %>
+    <%= f.text_field :bio %>
+  </div>
 
-  <%= f.submit "Update Profile", :id=>"Update Profile" %>
-<% end %>
+  <div class='bumper-25'></div>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |error| %>
-    <p><%= error %></p>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+    <div class='bumper-25'></div>
   <% end %>
-<% end %>
+
+  <div class="form--signup__submit-container">
+    <%= f.submit "Update Profile", class: 'btn' %>
+  </div>
+
+  <% end %>
+
+</section>

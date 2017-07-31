@@ -1,40 +1,47 @@
-<%= form_for @game do |f| %>
+<div class='bumper-25'></div>
+  <h2 class='text-center'>Create New Game Listing</h2>
+<div class='bumper-25'></div>
 
-<h1>Create New Game Listing</h1>
+<section>
+  <%= form_for(@game, html: {class: 'form--signup__box'}) do |f| %>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :number_of_players, value: 'How many players?' %>
     <%= f.number_field :number_of_players, default_value: '2' %>
   </div>
 
   <%= f.hidden_field :creator, value: current_user.id %>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :gametype, value: 'Gametype' %>
     <%= f.select :gametype, [['Standard','Standard'], ['Modern', 'Modern'], ['EDH', 'EDH'], ['Frontier', 'Frontier'], ['Limited / Draft', 'Limited / Draft'], ['Vintage', 'Vintage'], ['Legacy','Legacy'], ['Pauper', 'Pauper']], {}, {onchange: "showfield(this.options[this.selectedIndex].value)"} %>
   </div>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :time %>
     <%= f.time_field :time %>
   </div>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :date, value: 'Please choose a date at a maximum of 2 weeks from today.'%>
     <%= f.date_field :date, min: Date.today, max: Date.today + 2.week, :value => Time.now.strftime('%Y-%m-%d') %>
   </div>
 
-  <div>
+  <div class="form--signup__field">
     <%= f.label :address, value: 'Please supply a full valid address to be added to the map.' %>
     <%= f.text_field :address %>
   </div>
 
-  <%= f.submit id: 'special' %>
+  <div class="form--signup__field text-center">
+    <%= f.submit "Create Game", class: 'btn' %>
+    <%= button_to 'Cancel', map_index_path, class: 'btn' %>
+  </div>
 
-  <%= button_to 'Cancel', map_index_path %>
-<% end %>
+  <% end %>
+
+</section>

@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @current_user = current_user
     authenticate_user!
     @game = Game.find(params[:id])
     @request = Request.new
