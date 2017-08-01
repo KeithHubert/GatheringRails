@@ -12,7 +12,7 @@
   </div> -->
 
 <div class='row'>
-  <div class='columns small-12'>
+  <div class='columns small-12 text-center'>
     <h2>Your Games:</h2>
     <% @user.signups.each do |signup| %>
       <% if (signup.game.date > Time.zone.now + 1.day) %>
@@ -39,7 +39,7 @@
   <hr /> -->
 
 <div class='row'>
-  <div class='columns small-12'>
+  <div class='columns small-12 text-center'>
     <h2>Your Requests:</h2>
     <% if @user.requests.empty? %>
       No requests made
@@ -69,11 +69,8 @@
 </div> -->
 
 <div class='row'>
-  <div class='columns small-12 medium-6 text-center'>
-    <%= button_to 'Create New Game', new_game_path, method: :get, id: 'button', class: 'btn' %>
-  </div>
-  <div class='columns small-12 medium-6'>
-    <h1 class='text-center'>About Me</h1>
+  <div class='columns small-12 text-center'>
+    <h2 class='text-center'>About Me</h2>
     <div class='bumper-25'></div>
     <% if @user.bio.nil?%>
       <p class='text-center'>This user does not have a bio yet</p>
@@ -113,6 +110,6 @@
 
 <div class='row'>
   <div class='columns small-12 text-center'>
-    <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete, class: 'btn' %>
+    <%= link_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure that you want to delete your account?" }, method: :delete, class: 'btn' %>
   </div>
 </div>
