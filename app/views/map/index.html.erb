@@ -20,7 +20,8 @@
     <div>
       <% Game.order(id: :desc).limit(5).each do |g| %>
         <%= link_to g.title, game_path(g) %> | <%= "#{g.gametype}" %> | <%= "#{g.address}" %>
-        <br/>
+      </br>
+      </br>
       <% end %>
     </div>
 

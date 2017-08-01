@@ -10,7 +10,8 @@ $low-opacity-white: rgba(255, 255, 255, 0.22);
 $text-shadow: 2px 2px 10px $black;
 
 .conversations_box {
-    background-image: url("epharaweb.jpg");
+  background-color: #2A0631;
+    // background-image: url("epharaweb.jpg");
     background-position: top;
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -21,7 +22,7 @@ $text-shadow: 2px 2px 10px $black;
     border-color: $low-opacity-white;
     border-radius: 6px;
     margin: auto;
-    // padding: 1em;
+    padding: 1em;
 
     width: 50%;
     box-shadow: 5px 5px 15px $form-box-grey-shadow;
