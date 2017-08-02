@@ -37,6 +37,7 @@
     <% @spots_left = @game.number_of_players.to_i - @game.signups.size %>
     <p>Spots Left: <%= @spots_left %></p>
     <p>Creator: <%= link_to User.find(@game.creator).username, user_path(@game.creator) %></p>
+    <h1> Players: </h1>
     <% @game.signups.each do |signup| %>
       <%= link_to signup.user.username, user_path(signup.user) %>
       <% if current_user == signup.user && current_user.id != @game.creator %>
